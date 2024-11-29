@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creat Budget</title>
+  <link rel="stylesheet" href="../css/ListPaymentLimited.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <span class="back-icon" onclick="goBack()">&#x276E;</span>
+        <p>Thiết lập giới hạn cá nhân</p>
+        <span class="menu-icon" onclick="toggleModal()">&#x22EE;</span>
+      </div>
+    </header>
+<Main>
+    <div class="container2">
+        <h2>Danh sách các giới hạn</h2>
+        <div id="budget-list">
+          <!-- Budget items will be dynamically added here -->
+        </div>
+      </div>
+</Main>
+
+<script>
+    function toggleModal() {
+        var modal = document.getElementById("menuModal");
+        if (modal.style.display === "none" || modal.style.display === "") {
+            modal.style.display = "block";
+        } else {
+            modal.style.display = "none";
+        }
+    }
+
+    // Close the modal if clicked outside of it
+    window.onclick = function(event) {
+        var modal = document.getElementById("menuModal");
+        if (event.target != modal && event.target != document.querySelector('.menu-icon')) {
+            modal.style.display = "none";
+        }
+    }
+    const budgetData = [
+  {
+    name: 'My Budget',
+    type: 'Ăn uống',
+    limit: '3000000₫/tháng',
+    notes: 'none',
+  },
+  {
+    name: 'My Budget',
+    type: 'Đi lại',
+    limit: '2500000₫/tháng',
+    notes: 'none',
+  },
+];
+
+// Function to render budget items
+function renderBudgetList() {
+  const budgetList = document.getElementById('budget-list');
+  budgetList.innerHTML = '';
+
+  budgetData.forEach((item, index) => {
+    const budgetItem = document.createElement('div');
+    budgetItem.classList.add('budget-item');
+
+    budgetItem.innerHTML = `
+      <div>
+        <strong>Tên ngân sách:</strong> ${item.name}<br>
+        <strong>Loại:</strong> ${item.type}<br>
+        <strong>Giới hạn:</strong> ${item.limit}<br>
+        <strong>Ghi chú:</strong> ${item.notes}
+      </div>
+      <div class="actions">
+        <button onclick="editItem(${index})">✏️</button>
+        <button onclick="deleteItem(${index})">❌</button>
+      </div>
+    `;
+
+    budgetList.appendChild(budgetItem);
+  });
+}
+
+// Edit item function
+function editItem(index) {
+  const newType = prompt('Nhập loại mới:', budgetData[index].type);
+  const newLimit = prompt('Nhập giới hạn mới:', budgetData[index].limit);
+  const newNotes = prompt('Nhập ghi chú mới:', budgetData[index].notes);
+
+  if (newType) budgetData[index].type = newType;
+  if (newLimit) budgetData[index].limit = newLimit;
+  if (newNotes) budgetData[index].notes = newNotes;
+
+  renderBudgetList();
+}
+
+// Delete item function
+function deleteItem(index) {
+  if (confirm('Bạn có chắc chắn muốn xóa?')) {
+    budgetData.splice(index, 1);
+    renderBudgetList();
+  }
+}
+
+// Initialize
+renderBudgetList();
+</script>
+
+  <script src="script.js"></script>
+  <script>
+    // Lấy nút dropdown
+    var dropdown = document.querySelector('.dropdown-btn');
+    
+    // Lấy menu dropdown
+    var dropdownContent = document.querySelector('.dropdown-content');
+    
+    // Lấy tất cả các mục trong dropdown
+    var dropdownItems = document.querySelectorAll('.dropdown-item');
+    
+    // Khi bấm vào nút, toggle hiển thị dropdown
+    dropdown.addEventListener('click', function() {
+        dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+    });
+    
+    // Khi chọn mệnh giá trong dropdown
+    dropdownItems.forEach(function(item) {
+        item.addEventListener('click', function(event) {
+            // Lấy giá trị của mệnh giá
+            var selectedValue = event.target.getAttribute('data-value');
+            
+            // Cập nhật giá trị trong nút dropdown
+            dropdown.textContent = selectedValue;
+            
+            // Đóng dropdown
+            dropdownContent.style.display = 'none';
+        });
+    });
+
+    // Đóng dropdown khi bấm ra ngoài
+    window.addEventListener('click', function(event) {
+        if (!event.target.matches('.dropdown-btn')) {
+            dropdownContent.style.display = 'none';
+        }
+    });
+
+
+    function goBack() {
+    window.history.back(); // Quay lại trang trước đó
+}
+
+</script>
+</body>
+</html>

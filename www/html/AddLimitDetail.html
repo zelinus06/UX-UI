@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creat Budget</title>
+  <link rel="stylesheet" href="../css/AddLimitDetail.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <span class="back-icon" onclick="goBack()">&#x276E;</span>
+        <p>Thiết lập giới hạn cá nhân</p>
+        <span class="menu-icon" onclick="toggleModal()">&#x22EE;</span>
+      </div>
+    </header>
+<Main>
+    <div class="container">
+        <form id="budget-form">
+          <label for="budget">Ngân sách:</label>
+          <select id="budget" name="budget">
+            <option value="my-budget">My Budget</option>
+            <!-- Add more options as needed -->
+          </select>
+    
+          <label for="limit-type">Loại giới hạn:</label>
+          <div class="icon-input">
+            <select id="limit-type" name="limit-type">
+              <option value="card">Card</option>
+              <option value="cash">Cash</option>
+            </select>
+          </div>
+    
+          <label for="amount">Số tiền tối đa:</label>
+          <div class="currency-input">
+            <input type="number" id="amount" name="amount" placeholder="Enter amount" />
+            <select id="currency" name="currency">
+              <option value="usd">USD</option>
+              <option value="vnd">VND</option>
+              <!-- Add more currencies -->
+            </select>
+          </div>
+    
+          <label for="frequency">Tính theo:</label>
+          <select id="frequency" name="frequency">
+            <option value="week">Tuần</option>
+            <option value="month">Tháng</option>
+            <!-- Add more options -->
+          </select>
+    
+          <label for="notes">Ghi chú:</label>
+          <textarea id="notes" name="notes" placeholder="Add notes here..."></textarea>
+    
+          <a href="./ListPaymentLimited.html">
+          <button type="button" id="create-limit">Tạo giới hạn</button>
+        </a>
+        </form>
+      </div>
+</Main>
+
+<script>
+    function toggleModal() {
+        var modal = document.getElementById("menuModal");
+        if (modal.style.display === "none" || modal.style.display === "") {
+            modal.style.display = "block";
+        } else {
+            modal.style.display = "none";
+        }
+    }
+
+    // Close the modal if clicked outside of it
+    window.onclick = function(event) {
+        var modal = document.getElementById("menuModal");
+        if (event.target != modal && event.target != document.querySelector('.menu-icon')) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+  <script src="script.js"></script>
+  <script>
+    // Lấy nút dropdown
+    var dropdown = document.querySelector('.dropdown-btn');
+    
+    // Lấy menu dropdown
+    var dropdownContent = document.querySelector('.dropdown-content');
+    
+    // Lấy tất cả các mục trong dropdown
+    var dropdownItems = document.querySelectorAll('.dropdown-item');
+    
+    // Khi bấm vào nút, toggle hiển thị dropdown
+    dropdown.addEventListener('click', function() {
+        dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+    });
+    
+    // Khi chọn mệnh giá trong dropdown
+    dropdownItems.forEach(function(item) {
+        item.addEventListener('click', function(event) {
+            // Lấy giá trị của mệnh giá
+            var selectedValue = event.target.getAttribute('data-value');
+            
+            // Cập nhật giá trị trong nút dropdown
+            dropdown.textContent = selectedValue;
+            
+            // Đóng dropdown
+            dropdownContent.style.display = 'none';
+        });
+    });
+
+    // Đóng dropdown khi bấm ra ngoài
+    window.addEventListener('click', function(event) {
+        if (!event.target.matches('.dropdown-btn')) {
+            dropdownContent.style.display = 'none';
+        }
+    });
+
+
+    function goBack() {
+    window.history.back(); // Quay lại trang trước đó
+}
+
+</script>
+</body>
+</html>

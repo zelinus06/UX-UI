@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="../css/AllTransaction.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <div class="status-bar">
+        <span>10:00</span>
+        <span class="battery"></span>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="total-balance">
+        <div style="display: flex; flex-direction: column; align-items: center">
+          <div style="font-weight: bold">Số dư</div>
+          <div>27.000.000 đ</div>
+        </div>
+
+        <span class="menu-icon" onclick="toggleModal()">&#x22EE;</span>
+        <div class="modal" id="menuModal">
+          <div class="menu-option">
+            <div>Sắp xếp theo thời gian</div>
+          </div>
+          <div class="menu-option">
+            <div>Sắp xếp theo nhóm</div>
+          </div>
+          <div class="menu-option">
+            <div>Sắp xếp theo mức độ thu chi</div>
+          </div>
+        </div>
+      </div>
+      <div class="slick">
+        <div class="slick-item">04/2024</div>
+        <div class="slick-item">05/2024</div>
+        <div class="slick-item">06/2024</div>
+        <div class="slick-item">07/2024</div>
+        <div class="slick-item">08/2024</div>
+        <div class="slick-item">09/2024</div>
+        <div class="slick-item">10/2024</div>
+        <div class="slick-item">Tháng trước</div>
+        <div class="slick-item selected">Tháng này</div>
+      </div>
+
+      <!-- jQuery -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <!-- Slick JS -->
+      <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+      ></script>
+      <script type="text/javascript">
+        $(document).ready(function () {
+          $(".slick").slick({
+            // Slick options (optional)
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            infinite: false,
+            draggable: true,
+            initialSlide: $(".slick-item").length - 1,
+          });
+        });
+      </script>
+
+      <div style="margin-top: 30px; border-bottom: 2px solid #a9a9a9">
+        <div class="total-income">
+          <div>Tiền vào</div>
+          <div class="total-income-number">27.000.000 đ</div>
+        </div>
+        <div class="total-fee">
+          <div>Tiền ra</div>
+          <div class="total-fee-number">3.000.000 đ</div>
+        </div>
+      </div>
+      <div class="total-income" style="justify-content: flex-end">
+        <div class="total-income-number">27.000.000 đ</div>
+      </div>
+    </div>
+    <div class="transaction-section">
+      <!-- Category: Food -->
+      <div class="category">
+        <div class="category-header">
+          <div class="category-info">
+            <img
+              src="../img/food-icon.png"
+              alt="Food Icon"
+              class="category-icon"
+            />
+            <span>Ăn uống: 2 giao dịch</span>
+          </div>
+          <span class="category-total negative">-3.000.000đ</span>
+        </div>
+        <div class="transaction-item">
+          <img
+            src="../img/bag-icon.png"
+            alt="Transaction Icon"
+            class="transaction-icon"
+          />
+          <div class="transaction-details">
+            <p>20 tháng 11 năm 2024</p>
+            <p>Thứ Ba</p>
+          </div>
+          <span class="transaction-amount negative">-2.000.000đ</span>
+        </div>
+        <div class="transaction-item">
+          <img
+            src="../img/bag-icon.png"
+            alt="Transaction Icon"
+            class="transaction-icon"
+          />
+          <div class="transaction-details">
+            <p>24 tháng 11 năm 2024</p>
+            <p>Chủ nhật</p>
+          </div>
+          <span class="transaction-amount negative">-1.000.000đ</span>
+        </div>
+      </div>
+
+      <!-- Category: Salary -->
+      <div class="category">
+        <div class="category-header">
+          <div class="category-info">
+            <img
+              src="../img/salary-icon.png"
+              alt="Salary Icon"
+              class="category-icon"
+            />
+            <span>Lương: 1 giao dịch</span>
+          </div>
+          <span class="category-total">+30.000.000đ</span>
+        </div>
+        <div class="transaction-item">
+          <img
+            src="../img/bag-icon.png"
+            alt="Transaction Icon"
+            class="transaction-icon"
+          />
+          <div class="transaction-details">
+            <p>20 tháng 11 năm 2024</p>
+            <p>Thứ Ba</p>
+          </div>
+          <span class="transaction-amount">+30.000.000đ</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footer-item">
+        <img
+          src="../img/iconHomepage.png"
+          alt="Trang chủ"
+          class="footer-icon"
+        />
+        Trang chủ
+      </div>
+      <div class="footer-item">
+        <img
+          src="../img/Home%20Trend%20Up.png"
+          alt="Trang chủ"
+          class="footer-icon"
+        />
+        Giao dịch
+      </div>
+      <div class="footer-item add-button">+</div>
+
+      <a href="./CreateBudget1.html">
+        <div class="footer-item">
+          <img
+            src="../img/iconBudget.png"
+            alt="Ngân sách"
+            class="footer-icon"
+          />
+          Ngân sách
+        </div>
+      </a>
+
+      <div class="footer-item">
+        <img src="../img/Setting%202.png" alt="Trang chủ" class="footer-icon" />
+        Cài đặt
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      function toggleModal() {
+        var modal = document.getElementById("menuModal");
+        if (modal.style.display === "none" || modal.style.display === "") {
+          modal.style.display = "block";
+        } else {
+          modal.style.display = "none";
+        }
+      }
+
+      // Close the modal if clicked outside of it
+      window.onclick = function (event) {
+        var modal = document.getElementById("menuModal");
+        if (
+          event.target != modal &&
+          event.target != document.querySelector(".menu-icon")
+        ) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
