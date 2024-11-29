@@ -1,0 +1,393 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+.header {
+  padding: 10px;
+  color: black;
+  background: #ffffff;
+}
+.slick .selected {
+  font-weight: bold;
+}
+.slick .slick-item {
+  cursor: pointer;
+}
+.slick-slider {
+  border-bottom: 2px solid #a9a9a9;
+  border-top: 2px solid #a9a9a9;
+}
+.total-income {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.total-fee {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+.total-income-number {
+  color: #0446b7;
+}
+.total-fee-number {
+  color: #f32e2e;
+}
+.total-balance {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.slick-item {
+  padding: 10px;
+  text-align: center;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  width: 160px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 1000;
+}
+.modal .menu-option {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+.modal .menu-option:last-child {
+  border-bottom: none;
+}
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.menu-option div {
+  cursor: pointer;
+  width: fit-content;
+}
+.balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.balance .eye-icon,
+.balance .notification-icon {
+  font-size: 18px;
+}
+
+.content {
+  padding: 10px;
+  background-color: #fff;
+}
+
+.wallet-section,
+.transactions-section {
+  margin-top: 15px;
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.wallet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+
+.wallet-header p {
+  margin: 0;
+}
+
+.wallet-header .view-all {
+  font-size: 14px;
+  color: #007bff; /* Màu chữ của "Xem tất cả", có thể thay đổi */
+  text-decoration: none;
+}
+
+.wallet-header .view-all:hover {
+  text-decoration: underline;
+}
+
+.wallet-balance,
+.transaction-table {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.transaction-row {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #ccc;
+  padding: 5px 0;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer-item {
+  text-align: center;
+  font-size: 14px;
+}
+
+.footer-item.add-button {
+  font-size: 24px;
+  background-color: #75f78d;
+  color: white;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.wallet-balance {
+  display: flex;
+  justify-content: space-between; /* Đẩy các phần tử ra hai bên */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  font-size: 18px;
+}
+
+.wallet-balance .wallet-name {
+  font-weight: bold; /* Tên ví sẽ đậm */
+}
+
+.wallet-balance .wallet-amount {
+  font-weight: normal; /* Số tiền sẽ có trọng lượng font bình thường */
+  color: #007bff; /* Màu chữ cho số tiền, có thể thay đổi */
+}
+
+.wallet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+
+.wallet-header p {
+  margin: 0;
+}
+
+.wallet-header .view-all {
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.wallet-header .view-all:hover {
+  text-decoration: underline;
+}
+
+.wallet-balance {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1); /* Dấu gạch mờ */
+}
+
+.wallet-balance .wallet-name {
+  font-weight: bold;
+}
+
+.wallet-balance .wallet-amount {
+  font-weight: normal;
+  color: #007bff;
+}
+
+.wallet-transaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  width: 100%;
+}
+
+.wallet-transaction .transaction-type {
+  margin: 0;
+  padding: 10px;
+  width: 40%;
+}
+
+.wallet-transaction .transaction-type:first-child {
+  padding-right: 20px; /* Khoảng cách giữa Chi và đường gạch */
+}
+
+.wallet-transaction .transaction-type:last-child {
+  padding-left: 20px; /* Khoảng cách giữa Thu và đường gạch */
+}
+
+.wallet-transaction .transaction-type:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1); /* Đường gạch mờ */
+  z-index: -1; /* Đảm bảo đường gạch ở phía sau chữ */
+}
+
+.wallet-transaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  font-size: 16px;
+  width: 100%;
+}
+
+.wallet-transaction .transaction-type {
+  margin: 0;
+  padding: 10px;
+  text-align: center; /* Căn giữa chữ trong mỗi thẻ <p> */
+  flex: 1; /* Đảm bảo mỗi phần tử có thể giãn ra đều nhau */
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between; /* Các item phân bố đều */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  background-color: #ffffff;
+  padding: 10px;
+}
+
+.footer-item {
+  color: black;
+  font-size: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Căn chỉnh theo chiều dọc */
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-icon {
+  width: 24px; /* Kích thước icon */
+  height: 24px; /* Kích thước icon */
+  margin-bottom: 5px; /* Khoảng cách giữa icon và chữ */
+}
+
+.add-button {
+  background-color: #4caf50;
+  border-radius: 50%;
+  padding: 10px;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none; /* Bỏ gạch chân */
+  color: inherit; /* Dùng màu chữ của phần tử chứa nó */
+  display: block; /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
+}
+.back-icon,
+.menu-icon {
+  font-size: 28px;
+  color: #000;
+  right: 20px;
+  position: fixed;
+  cursor: pointer;
+}
+.transaction-section {
+  margin: 20px;
+}
+
+.category {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.category-info {
+  display: flex;
+  align-items: center;
+}
+
+.category-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.category-total {
+  font-size: 16px;
+  font-weight: bold;
+  color: #0446b7;
+}
+.category-total.negative {
+  color: #ff3b30;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+.transaction-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.transaction-details {
+  flex-grow: 1;
+  padding-left: 10px;
+}
+
+.transaction-details p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.transaction-amount {
+  font-size: 16px;
+  font-weight: bold;
+  color: #0446b7;
+}
+
+.transaction-amount.negative {
+  color: #ff3b30;
+}

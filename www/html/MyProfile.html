@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Budget</title>
+    <link rel="stylesheet" href="../css/MyProfile.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <span class="back-icon" onclick="goBack()">&#x276E;</span>
+        <div class="header-title">My Budget</div>
+        <div class="header-right">
+          <span class="menu-icon">⋮</span>
+        </div>
+      </div>
+
+      <!-- Profile Section -->
+      <div class="profile-section">
+        <div class="profile-image">
+          <img src="../img/profile-placeholder.png" alt="Profile Image" />
+        </div>
+        <div class="profile-info">
+          <p>Name: Thai</p>
+          <p>Age: 39</p>
+          <p>Family role: Father</p>
+        </div>
+      </div>
+
+      <!-- Recent Activity Section -->
+      <div class="recent-activity">
+        <h3>Recent active</h3>
+        <div class="activity-item">
+          <p>10/11/2024: <span>+500 USD</span></p>
+        </div>
+        <div class="activity-item">
+          <p>08/11/2024: <span>-100 USD</span></p>
+        </div>
+        <div class="activity-item">
+          <p>03/11/2024: <span>+1500 USD</span></p>
+        </div>
+      </div>
+
+      <!-- Chart Section -->
+      <div class="chart-section">
+        <img src="../img/myProfile-chart.png" alt="Chart" />
+      </div>
+    </div>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>
