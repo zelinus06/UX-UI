@@ -1,0 +1,87 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #fff;
+  }
+  
+  header {
+    background-color: #75F78D;
+    padding: 10px;
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  header h1 {
+    color: #000;
+    font-size: 24px;
+  }
+  
+  .back-icon, .menu-icon {
+    font-size: 28px;
+    color: #000;
+    cursor: pointer;
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  .description {
+    font-size: 16px;
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .create-button {
+    background-color: #75F78D;
+    color: #000;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .create-button:hover {
+    background-color: #75F78D;
+  }
+  
+  @media (max-width: 480px) {
+    .header-content h1 {
+      font-size: 18px;
+    }
+  
+    .back-icon, .menu-icon {
+      font-size: 24px;
+    }
+  
+    .description {
+      font-size: 14px;
+    }
+  
+    .create-button {
+      font-size: 14px;
+    }
+  }
+  

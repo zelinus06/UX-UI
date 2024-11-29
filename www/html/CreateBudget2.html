@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creat Budget</title>
+  <link rel="stylesheet" href="../css/CreateBudget2.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <span class="back-icon" onclick="goBack()">&#x276E;</span>
+        <p>My Budget</p>
+        <span class="menu-icon"></span>
+      </div>
+    </header>
+
+    <main>
+        <div class="content">
+            <div class="row">
+                <p>Tên:</p>
+                <input></input>
+            </div>
+            <div class="row">
+                <img src="../img/Wallet Money.png" class="footer-icon">
+                <input class="inputmoney"></input>
+                <div class="dropdown">
+                    <button class="dropdown-btn">VND</button>
+                    <div class="dropdown-content">
+                        <a href="#" class="dropdown-item" data-value="VND">VND</a>
+                        <a href="#" class="dropdown-item" data-value="USD">USD</a>
+                        <a href="#" class="dropdown-item" data-value="Pound">Pound</a>
+                        <a href="#" class="dropdown-item" data-value="Yen">Yen</a>
+                    </div>
+                </div>                
+            </div>
+            <div class="row">
+                <img src="../img/User Search.png" class="footer-icon">
+                <input id="inputField" type="text">
+                <button class="addPerson" onclick="addInputValue()">+</button>
+            </div>
+            <div id="output"></div>
+            <button class="create-button" onclick="goToHomepage()">Tạo mới</button>
+        </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Lấy nút dropdown
+    var dropdown = document.querySelector('.dropdown-btn');
+    
+    // Lấy menu dropdown
+    var dropdownContent = document.querySelector('.dropdown-content');
+    
+    // Lấy tất cả các mục trong dropdown
+    var dropdownItems = document.querySelectorAll('.dropdown-item');
+    
+    // Khi bấm vào nút, toggle hiển thị dropdown
+    dropdown.addEventListener('click', function() {
+        dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+    });
+    
+    // Khi chọn mệnh giá trong dropdown
+    dropdownItems.forEach(function(item) {
+        item.addEventListener('click', function(event) {
+            // Lấy giá trị của mệnh giá
+            var selectedValue = event.target.getAttribute('data-value');
+            
+            // Cập nhật giá trị trong nút dropdown
+            dropdown.textContent = selectedValue;
+            
+            // Đóng dropdown
+            dropdownContent.style.display = 'none';
+        });
+    });
+
+    // Đóng dropdown khi bấm ra ngoài
+    window.addEventListener('click', function(event) {
+        if (!event.target.matches('.dropdown-btn')) {
+            dropdownContent.style.display = 'none';
+        }
+    });
+
+
+
+    function addInputValue() {
+    // Lấy giá trị từ ô input
+    var inputValue = document.getElementById('inputField').value;
+
+    // Kiểm tra nếu ô input không rỗng
+    if (inputValue.trim() !== "") {
+        // Tạo phần tử div chứa nội dung và dấu "X"
+        var newItem = document.createElement('div');
+        newItem.classList.add('output-item');
+
+        // Thêm nội dung nhập vào ô
+        var text = document.createElement('span');
+        text.innerText = inputValue;
+        text.classList.add('content'); // Thêm class để quản lý nội dung
+
+        // Thêm dấu "X" vào phần tử
+        var deleteBtn = document.createElement('span');
+        deleteBtn.innerText = 'x';
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.onclick = function() {
+            newItem.remove();  // Xóa phần tử khi click vào dấu "X"
+        };
+
+        // Thêm nội dung vào phần tử div
+        newItem.appendChild(text);
+
+        // Thêm dấu "X" vào cuối cùng
+        newItem.appendChild(deleteBtn);
+
+        // Thêm phần tử div vào khu vực hiển thị output
+        document.getElementById('output').appendChild(newItem);
+
+        // Sau khi hiển thị, xóa giá trị trong ô input
+        document.getElementById('inputField').value = "";
+    } else {
+        alert("Vui lòng nhập giá trị vào ô input!");
+    }
+}
+
+
+function goBack() {
+    window.history.back(); // Quay lại trang trước đó
+}
+
+function goToHomepage() {
+    window.location.href = "MyBudget.html";
+}
+</script>
+</body>
+</html>
