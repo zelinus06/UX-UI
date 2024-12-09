@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Thiết lập giới hạn ngân sách</title>
+        <link rel="stylesheet" href="frame25.css" />
+    </head>
+    <body>
+        <div class="container">
+            <!-- Header -->
+            <header class="header">
+                <a href="frame24.html" class="back-btn">←</a>
+                <h1>Thiết lập giới hạn ngân sách</h1>
+                <div class="options-icon"></div>
+            </header>
+
+            <!-- Form Content -->
+            <div class="form-container">
+                <div class="form-item">
+                    <label for="budget">Ngân sách:</label>
+                    <input type="text" id="budget" placeholder="My Budget" />
+                </div>
+                <div class="form-item-horizontal">
+                    <label for="amount">Số tiền tối thiểu:</label>
+                    <input
+                        type="text"
+                        id="amount"
+                        placeholder="0"
+                        class="small-input"
+                    />
+                    <select id="currency" class="small-select">
+                        <option>USD</option>
+                        <option>VND</option>
+                        <option>EUR</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label for="duration">Tính theo:</label>
+                    <select id="duration">
+                        <option>Tuần</option>
+                        <option>Tháng</option>
+                        <option>Năm</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label for="note">Ghi chú:</label>
+                    <input type="text" id="note" placeholder="Nhập ghi chú" />
+                </div>
+            </div>
+
+            <!-- Button at the Bottom -->
+            <div class="button-container">
+                <a href="frame26.html" class="action-btn">Tạo giới hạn</a>
+            </div>
+        </div>
+    </body>
+</html>

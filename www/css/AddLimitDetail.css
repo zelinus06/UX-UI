@@ -56,7 +56,7 @@ main {
 
 /* Style cho nút dropdown */
 .dropdown-btn {
-  background-color: #75f78d;
+  background-color: #75F78D;
   color: black;
   padding: 10px 20px;
   font-size: 16px;
@@ -95,7 +95,7 @@ main {
 }
 
 .dropdown:hover .dropdown-btn {
-  background-color: #75f78d;
+  background-color: #75F78D;
 }
 
 /* Style cho hình ảnh */
@@ -148,7 +148,7 @@ a {
   display: block; /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
 }
 .Add {
-  background-color: #75f78d;
+  background-color: #75F78D;
   cursor: pointer;
   padding: 20px 40px;
   border: none;

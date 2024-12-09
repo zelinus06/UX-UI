@@ -12,7 +12,7 @@
       <div class="header-content">
         <span class="back-icon" onclick="goBack()">&#x276E;</span>
         <p>Thiết lập giới hạn cá nhân</p>
-        <span class="menu-icon" onclick="toggleModal()">&#x22EE;</span>
+          <span class="menu-icon" onclick="toggleModal()"></span>
       </div>
     </header>
 <Main>
@@ -22,6 +22,19 @@
           <!-- Budget items will be dynamically added here -->
         </div>
       </div>
+
+
+    <div class="modal" id="menuModal">
+        <a href="./AddLimitPayment.html">
+            <div>Thiết lập giới hạn</div>
+        </a>
+        <a href="link-to-your-page.html">
+            <div>Chi tiết giao dịch</div>
+        </a>
+        <a href="./setting/frame23.html">
+            <div>Thay đổi thông tin</div>
+        </a>
+    </div>
 </Main>
 
 <script>
@@ -146,7 +159,7 @@ renderBudgetList();
 
 
     function goBack() {
-    window.history.back(); // Quay lại trang trước đó
+        window.location.href = './MyProfile.html'; // Quay lại trang trước đó
 }
 
 </script>

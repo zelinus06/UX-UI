@@ -1,0 +1,132 @@
+/* styles.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 360px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+}
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #75F78D;
+    padding: 10px;
+    color: #000;
+    font-size: 16px;
+}
+
+.header h1 {
+    font-size: 16px;
+    margin: 0;
+    text-align: center;
+    flex: 1;
+}
+
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+    margin-right: auto;
+}
+
+.options-icon {
+    font-size: 20px;
+}
+
+/* Form Container */
+.form-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+}
+
+.form-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-item-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.form-item label,
+.form-item-horizontal label {
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+}
+
+.form-item input,
+.form-item-horizontal input,
+.form-item-horizontal select {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+.small-input {
+    width: 50px; /* Kích thước nhỏ cho trường amount */
+    text-align: center;
+}
+
+.small-select {
+    width: 70px; /* Kích thước nhỏ cho dropdown */
+}
+
+.form-item-horizontal input,
+.form-item-horizontal select {
+    flex: none; /* Không mở rộng quá mức */
+}
+
+/* Button at the Bottom */
+.button-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.action-btn {
+    background-color: #75F78D;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 20px;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn:hover {
+    background-color: #76d476;
+}
+.small-select {
+    width: auto; /* Đặt kích thước tự động để phù hợp với nội dung */
+    min-width: 100px; /* Đặt chiều rộng tối thiểu đủ để hiển thị đầy đủ đơn vị tiền tệ */
+    padding: 5px; /* Đảm bảo khoảng cách bên trong dropdown */
+    text-align: center; /* Căn giữa nội dung */
+}

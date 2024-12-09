@@ -1,0 +1,74 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Success Icon */
+.success-icon {
+    margin: 20px 0;
+}
+
+.success-icon .circle {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    background-color: #4caf50;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.success-icon .circle span {
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+/* Success Message */
+.success-message {
+    font-size: 16px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #a7f1a3;
+    padding: 10px 15px;
+    border-radius: 8px 8px 0 0;
+    color: #333;
+}
+
+.header h2 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.header span {
+    font-size: 18px;
+    cursor: pointer;
+}
