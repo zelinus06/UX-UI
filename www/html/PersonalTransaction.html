@@ -11,7 +11,7 @@
     <header>
       <div class="header-content">
         <span class="back-icon" onclick="goBack()">&#x276E;</span>
-        <p>My Budget</p>
+        <p>Chi tiết giao dịch cá nhân</p>
         <span class="menu-icon" onclick="toggleModal()">&#x22EE;</span>
       </div>
     </header>
@@ -41,16 +41,16 @@
 
 
   <div class="modal" id="menuModal">
-    <a href="./CreateBudget2.html">
+    <a href="./AddLimitPayment.html">
         <div>Thiết lập giới hạn</div>
     </a>
-    <a href="link-to-your-page.html">
+    <a href="./PersonalTransaction.html">
         <div>Chi tiết giao dịch</div>
     </a>
-    <a href="link-to-your-page.html">
+    <a href="./setting/frame23.html">
         <div>Thay đổi thông tin</div>
     </a>
-</div>
+  </div>
 
 
 <script>
@@ -110,7 +110,7 @@
     });
 
     function goBack() {
-    window.history.back(); // Quay lại trang trước đó
+        window.location.href = './MyProfile.html'; // Quay lại trang trước đó
 }
 
 </script>

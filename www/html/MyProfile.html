@@ -13,7 +13,7 @@
         <span class="back-icon" onclick="goBack()">&#x276E;</span>
         <div class="header-title">My Budget</div>
         <div class="header-right">
-          <span class="menu-icon">⋮</span>
+          <span class="menu-icon" onclick="toggleModal()">&#x22EE;</span>
         </div>
       </div>
 
@@ -47,10 +47,42 @@
       <div class="chart-section">
         <img src="../img/myProfile-chart.png" alt="Chart" />
       </div>
+
+
+      <div class="modal" id="menuModal">
+        <a href="./AddLimitPayment.html">
+          <div>Thiết lập giới hạn</div>
+        </a>
+        <a href="./PersonalTransaction.html">
+          <div>Chi tiết giao dịch</div>
+        </a>
+        <a href="./setting/frame23.html">
+          <div>Thay đổi thông tin</div>
+        </a>
+      </div>
     </div>
+
+    <script>
+      function toggleModal() {
+        var modal = document.getElementById("menuModal");
+        if (modal.style.display === "none" || modal.style.display === "") {
+          modal.style.display = "block";
+        } else {
+          modal.style.display = "none";
+        }
+      }
+
+      // Close the modal if clicked outside of it
+      window.onclick = function(event) {
+        var modal = document.getElementById("menuModal");
+        if (event.target != modal && event.target != document.querySelector('.menu-icon')) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
     <script>
       function goBack() {
-        window.history.back();
+        window.location.href = './MyBudget.html';
       }
     </script>
   </body>

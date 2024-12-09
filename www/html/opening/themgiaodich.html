@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm giao dịch</title>
+    <link rel="stylesheet" href="themgiaodich.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <span class="back-arrow" onclick="goback()">&#8592;</span>
+            <h2>Thêm giao dịch</h2>
+            <span class="settings-icon"></span>
+        </div>
+        <form class="transaction-form">
+            <div class="form-group">
+                <label for="budget">Ngân sách:</label>
+                <select id="budget">
+                    <option>My Budget</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Loại giao dịch:</label>
+                <div class="transaction-type">
+                    <button type="button" class="type-btn active">Chi</button>
+                    <button type="button" class="type-btn">Thu</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="amount">Số tiền:</label>
+                <div class="amount-wrapper">
+                    <input type="number" id="amount" placeholder="..." required>
+                    <span class="currency" id="currency-span">USD</span>
+                    <div class="dropdown">
+                        <div class="dropdown-content">
+                            <a href="#" data-value="USD">USD</a>
+                            <a href="#" data-value="EUR">EUR</a>
+                            <a href="#" data-value="VND">VND</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="details">Chi tiết:</label>
+                <input type="text" id="details" placeholder="..." required>
+            </div>
+            <div class="form-group">
+                <label for="date">Ngày:</label>
+                <input type="date" id="date" required>
+            </div>
+            <button type="button" class="submit-btn" onclick="redirectToHome()">Tạo mới</button>
+        </form>
+    </div>
+    <script>
+        function redirectToHome() {
+            window.location.href = './themthanhcong.html'; // Thay đổi đường dẫn nếu cần
+        }
+        function goback() {
+            window.location.href = '../Homepage.html'; // Thay đổi đường dẫn nếu cần
+        }
+
+        // Khi bấm vào thẻ currency, mở dropdown
+        document.getElementById('currency-span').addEventListener('click', function() {
+            document.querySelector('.dropdown').classList.toggle('open');
+        });
+
+        // Khi chọn đơn vị tiền tệ từ dropdown
+        document.querySelectorAll('.dropdown-content a').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault(); // Ngừng hành động mặc định của liên kết
+
+                // Lấy giá trị đơn vị tiền tệ được chọn và thay thế vào thẻ currency
+                const selectedCurrency = item.getAttribute('data-value');
+                document.getElementById('currency-span').textContent = selectedCurrency;
+
+                // Đóng dropdown
+                document.querySelector('.dropdown').classList.remove('open');
+            });
+        });
+
+        document.querySelectorAll('.type-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Xóa class 'active' khỏi tất cả các nút
+                document.querySelectorAll('.type-btn').forEach(btn => btn.classList.remove('active'));
+
+                // Thêm class 'active' vào nút được bấm
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

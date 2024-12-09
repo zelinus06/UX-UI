@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết giao dịch ngân sách</title>
+    <link rel="stylesheet" href="chitietgiaodichngansach.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header padding4px">
+<!--            <div class="header-left">-->
+<!--                <button class="back-btn">⬅</button>-->
+<!--                <h1>Chi tiết giao dịch ngân sách</h1>-->
+<!--            </div>-->
+<!--            <div class="header-right">-->
+<!--                <button class="menu-btn">⋮</button>-->
+<!--            </div>-->
+            <header>
+                <div class="header-content">
+                    <span class="back-icon" onclick="goback()">&#x276E;</span>
+                    <p>Chi tiết giao dịch ngân sách</p>
+                    <span class="menu-icon" onclick="toggleModal()"></span>
+                </div>
+            </header>
+        </header>
+        <div >
+            <!-- Dropdown Tháng và Năm ra khỏi Header -->
+            <div class="dropdown-container">
+                <!-- Dropdown Tháng -->
+                <select id="month-select" class="month-select">
+                    <option value="11">Tháng 11</option>
+                    <option value="10">Tháng 10</option>
+                    <option value="9">Tháng 9</option>
+                    <option value="8">Tháng 8</option>
+                    <option value="7">Tháng 7</option>
+                    <option value="6">Tháng 6</option>
+                    <option value="5">Tháng 5</option>
+                    <option value="4">Tháng 4</option>
+                </select>
+
+                <!-- Dropdown Năm -->
+                <select id="year-select" class="year-select">
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                </select>
+            </div>
+
+            <!-- Biểu đồ thu chi ngân sách -->
+            <div class="center">
+                <img src="../../img/Thu%20nhập%20ròng.png" class="f-icon memberimg">
+            </div>
+
+            <!-- Danh sách giao dịch -->
+            <div class="transaction-list">
+                <h3>Danh sách giao dịch</h3>
+                <ul>
+                    <li>21/11/2024: Thai +5000000đ (hoa hồng)</li>
+                    <li>20/11/2024: An +20000000đ (tiền lương)</li>
+                    <li>18/11/2024: Minh -500000đ (tiền xăng)</li>
+                    <li>14/11/2024: An -200000đ (ăn sáng)</li>
+                    <li>10/11/2024: Thai -400000đ (ăn tối)</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function goback() {
+            window.location.href = '../MyBudget.html';
+        }
+    </script>
+
+</body>
+</html>
