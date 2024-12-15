@@ -12,7 +12,6 @@ body {
 }
 header {
   background-color: #75f78d !important;
-  /*padding: 10px;*/
 }
 .header-content {
   display: flex;
@@ -70,6 +69,12 @@ span.back-icon {
 }
 .slick-item {
   padding: 10px;
+  text-align: center;
+}
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  flex-grow: 1;
   text-align: center;
 }
 .modal {
