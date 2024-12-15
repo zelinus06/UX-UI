@@ -1,24 +1,21 @@
-/* Basic Reset */
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body styling */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #fff;
-}
-
-header {
-    background-color: #75F78D;
+/* Header */
+.header {
+    background-color: #75f78d;
     padding: 10px;
+    margin-bottom: 20px;
 }
 
 .header-content {
@@ -32,116 +29,79 @@ header h1 {
     font-size: 24px;
 }
 
-.back-icon, .menu-icon {
+.back-icon,
+.menu-icon {
     font-size: 28px;
     color: #000;
     cursor: pointer;
 }
 
-main {
+/* Dropdown container */
+.dropdown-container {
     display: flex;
-    flex-direction: column; /* Đảm bảo các phần tử trong main sẽ được xếp theo cột */
-    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
 }
 
-/* Style cho dropdown */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 20px; /* Tạo khoảng cách giữa dropdown và hình ảnh */
-}
-
-/* Style cho nút dropdown */
-.dropdown-btn {
-    background-color: #75F78D;
-    color: black;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border: 1px solid #000;
-    margin-top: 40px;
-}
-
-/* Ẩn dropdown content khi không có tương tác */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-/* Style cho các item trong dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Chỉnh màu khi hover vào item */
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-/* Hiển thị dropdown content khi hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropdown-btn {
-    background-color: #75F78D;
-}
-
-/* Style cho hình ảnh */
-.f-icon {
-    margin-top: 20px; /* Khoảng cách giữa dropdown và hình ảnh */
-    width: 150px;     /* Chỉnh kích thước của hình ảnh */
-    height: auto;     /* Giữ tỷ lệ cho hình ảnh */
-}
-
-.member {
-    margin-top:79px;
-}
-
-.memberimg {
-    width: 100%;
-}
-
-
-body {
-    font-family: Arial, sans-serif;
-}
-
-.back-icon, .menu-icon {
-    font-size: 20px;
+/* Dropdown Styling */
+.month-select, .year-select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    width: 120px;
     cursor: pointer;
 }
-.modal {
-    display: none;
-    position: fixed;
-    top: 50px;
-    right: 10px;
-    width: 160px;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    z-index: 1000;
+
+/* Biểu đồ */
+.chart-container {
+    margin-top: 18px;
+    background-color: #e0ffe0;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-.modal div {
+
+.chart-title {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+/* Transaction List Section */
+.transaction-list {
+    margin-top: 20px;
+    background-color: #fff;
     padding: 10px;
-    border-bottom: 1px solid #ccc;
-    text-align: center;
-}
-.modal div:last-child {
-    border-bottom: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-a {
-    text-decoration: none;  /* Bỏ gạch chân */
-    color: inherit;         /* Dùng màu chữ của phần tử chứa nó */
-    display: block;         /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
+.transaction-list h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 12px;
 }
 
+.transaction-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.transaction-list ul li {
+    background-color: #f9f9f9;
+    margin: 6px 0;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #555;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}

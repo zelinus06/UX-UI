@@ -1,118 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chi tiết giao dịch cá nhân</title>
-  <link rel="stylesheet" href="../css/CircleChart.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết giao dịch ngân sách</title>
+    <link rel="stylesheet" href="../css/PersonalTransaction.css">
+    <!-- Thêm Chart.js từ CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="header-content">
-        <span class="back-icon" onclick="goBack()">&#x276E;</span>
-        <p>Chi tiết giao dịch cá nhân</p>
-        <span class="menu-icon" onclick="toggleModal()">&#x22EE;</span>
-      </div>
+<div class="container">
+    <!-- Header -->
+    <header class="header padding4px">
+        <div class="header-content">
+            <span class="back-icon" onclick="goback()">&#x276E;</span>
+            <p>Chi tiết giao dịch cá nhân</p>
+            <span class="menu-icon" onclick="toggleModal()"></span>
+        </div>
     </header>
 
-    <main>
-        <div class="content">
-            <div class="dropdown">
-                <button class="dropdown-btn">10/2024</button>
-                <div class="dropdown-content">
-                    <a href="#" class="dropdown-item" data-value="10/2024">10/2024</a>
-                    <a href="#" class="dropdown-item" data-value="09/2024">09/2024</a>
-                    <a href="#" class="dropdown-item" data-value="08/2024">08/2024</a>
-                    <a href="#" class="dropdown-item" data-value="07/2024">07/2024</a>
-                    <a href="#" class="dropdown-item" data-value="06/2024">06/2024</a>
-                    <a href="#" class="dropdown-item" data-value="05/2024">05/2024</a>
-                    <a href="#" class="dropdown-item" data-value="04/2024">04/2024</a>
-                </div>
-            </div>
-    </main>
-    <main>
-        <img src="../img/Thu nhập ròng.png" class="f-icon memberimg">
-    </main>
-    <main>
-        <img src="../img/Chi tiết giao dịch cá nhân.png" class="f-icon memberimg">
-    </main>
-  </div>
+    <!-- Dropdown for Month and Year -->
+    <div class="dropdown-container">
+        <select id="month-select" class="month-select">
+            <option value="11">Tháng 11</option>
+            <option value="10">Tháng 10</option>
+            <option value="9">Tháng 9</option>
+            <option value="8">Tháng 8</option>
+            <option value="7">Tháng 7</option>
+            <option value="6">Tháng 6</option>
+            <option value="5">Tháng 5</option>
+            <option value="4">Tháng 4</option>
+        </select>
 
+        <select id="year-select" class="year-select">
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+        </select>
+    </div>
 
-  <div class="modal" id="menuModal">
-    <a href="./AddLimitPayment.html">
-        <div>Thiết lập giới hạn</div>
-    </a>
-    <a href="./PersonalTransaction.html">
-        <div>Chi tiết giao dịch</div>
-    </a>
-    <a href="./setting/frame23.html">
-        <div>Thay đổi thông tin</div>
-    </a>
-  </div>
+    <!-- Biểu đồ thu chi ngân sách -->
+    <div class="chart-container">
+        <canvas id="budgetChart"></canvas>
+    </div>
 
+    <!-- Danh sách giao dịch -->
+    <div class="transaction-list">
+        <h3>Giao dịch gần đây</h3>
+        <ul>
+            <li>21/11/2024: +5000000đ (hoa hồng)</li>
+            <li>20/11/2024: +20000000đ (tiền lương)</li>
+            <li>18/11/2024: -500000đ (tiền xăng)</li>
+            <li>14/11/2024: -200000đ (ăn sáng)</li>
+            <li>10/11/2024: -400000đ (ăn tối)</li>
+        </ul>
+    </div>
+</div>
 
 <script>
-    function toggleModal() {
-        var modal = document.getElementById("menuModal");
-        if (modal.style.display === "none" || modal.style.display === "") {
-            modal.style.display = "block";
-        } else {
-            modal.style.display = "none";
-        }
+    function goback() {
+        window.location.href = '../html/MyBudget.html';
     }
 
-    // Close the modal if clicked outside of it
-    window.onclick = function(event) {
-        var modal = document.getElementById("menuModal");
-        if (event.target != modal && event.target != document.querySelector('.menu-icon')) {
-            modal.style.display = "none";
+    // Dữ liệu cho biểu đồ thu và chi
+    const data = {
+        labels: ['21/11', '20/11', '18/11', '14/11', '10/11'], // Ngày giao dịch
+        datasets: [{
+            label: 'Thu nhập',
+            data: [5000000, 20000000, 0, 0, 0], // Dữ liệu thu nhập
+            borderColor: 'green',
+            backgroundColor: 'rgba(0, 255, 0, 0.2)',
+            fill: true,
+            tension: 0.4
+        }, {
+            label: 'Chi phí',
+            data: [0, 0, -500000, -200000, -400000], // Dữ liệu chi phí
+            borderColor: 'red',
+            backgroundColor: 'rgba(255, 0, 0, 0.2)',
+            fill: true,
+            tension: 0.4
+        }]
+    };
+
+    // Cấu hình biểu đồ
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Biểu đồ thu chi ngân sách'
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false
+                },
+                legend: {
+                    position: 'top',
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true
+                },
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
-    }
-</script>
+    };
 
-  <script src="script.js"></script>
-  <script>
-    // Lấy nút dropdown
-    var dropdown = document.querySelector('.dropdown-btn');
-    
-    // Lấy menu dropdown
-    var dropdownContent = document.querySelector('.dropdown-content');
-    
-    // Lấy tất cả các mục trong dropdown
-    var dropdownItems = document.querySelectorAll('.dropdown-item');
-    
-    // Khi bấm vào nút, toggle hiển thị dropdown
-    dropdown.addEventListener('click', function() {
-        dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-    });
-    
-    // Khi chọn mệnh giá trong dropdown
-    dropdownItems.forEach(function(item) {
-        item.addEventListener('click', function(event) {
-            // Lấy giá trị của mệnh giá
-            var selectedValue = event.target.getAttribute('data-value');
-            
-            // Cập nhật giá trị trong nút dropdown
-            dropdown.textContent = selectedValue;
-            
-            // Đóng dropdown
-            dropdownContent.style.display = 'none';
-        });
-    });
-
-    // Đóng dropdown khi bấm ra ngoài
-    window.addEventListener('click', function(event) {
-        if (!event.target.matches('.dropdown-btn')) {
-            dropdownContent.style.display = 'none';
-        }
-    });
-
-    function goBack() {
-        window.location.href = './MyProfile.html'; // Quay lại trang trước đó
-}
-
+    // Tạo biểu đồ
+    var budgetChart = new Chart(
+        document.getElementById('budgetChart'),
+        config
+    );
 </script>
 </body>
 </html>

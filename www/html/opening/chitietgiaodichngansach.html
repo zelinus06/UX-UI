@@ -4,75 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết giao dịch ngân sách</title>
-    <link rel="stylesheet" href="chitietgiaodichngansach.css">
+    <link rel="stylesheet" href="./chitietgiaodichngansach.css">
+    <!-- Thêm Chart.js từ CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header padding4px">
-<!--            <div class="header-left">-->
-<!--                <button class="back-btn">⬅</button>-->
-<!--                <h1>Chi tiết giao dịch ngân sách</h1>-->
-<!--            </div>-->
-<!--            <div class="header-right">-->
-<!--                <button class="menu-btn">⋮</button>-->
-<!--            </div>-->
-            <header>
-                <div class="header-content">
-                    <span class="back-icon" onclick="goback()">&#x276E;</span>
-                    <p>Chi tiết giao dịch ngân sách</p>
-                    <span class="menu-icon" onclick="toggleModal()"></span>
-                </div>
-            </header>
-        </header>
-        <div >
-            <!-- Dropdown Tháng và Năm ra khỏi Header -->
-            <div class="dropdown-container">
-                <!-- Dropdown Tháng -->
-                <select id="month-select" class="month-select">
-                    <option value="11">Tháng 11</option>
-                    <option value="10">Tháng 10</option>
-                    <option value="9">Tháng 9</option>
-                    <option value="8">Tháng 8</option>
-                    <option value="7">Tháng 7</option>
-                    <option value="6">Tháng 6</option>
-                    <option value="5">Tháng 5</option>
-                    <option value="4">Tháng 4</option>
-                </select>
-
-                <!-- Dropdown Năm -->
-                <select id="year-select" class="year-select">
-                    <option value="2024">2024</option>
-                    <option value="2023">2023</option>
-                    <option value="2022">2022</option>
-                    <option value="2021">2021</option>
-                </select>
-            </div>
-
-            <!-- Biểu đồ thu chi ngân sách -->
-            <div class="center">
-                <img src="../../img/Thu%20nhập%20ròng.png" class="f-icon memberimg">
-            </div>
-
-            <!-- Danh sách giao dịch -->
-            <div class="transaction-list">
-                <h3>Danh sách giao dịch</h3>
-                <ul>
-                    <li>21/11/2024: Thai +5000000đ (hoa hồng)</li>
-                    <li>20/11/2024: An +20000000đ (tiền lương)</li>
-                    <li>18/11/2024: Minh -500000đ (tiền xăng)</li>
-                    <li>14/11/2024: An -200000đ (ăn sáng)</li>
-                    <li>10/11/2024: Thai -400000đ (ăn tối)</li>
-                </ul>
-            </div>
+<div class="container">
+    <!-- Header -->
+    <header class="header padding4px">
+        <div class="header-content">
+            <span class="back-icon" onclick="goback()">&#x276E;</span>
+            <p>Chi tiết giao dịch ngân sách</p>
+            <span class="menu-icon" onclick="toggleModal()"></span>
         </div>
+    </header>
 
+    <!-- Dropdown for Month and Year -->
+    <div class="dropdown-container">
+        <select id="month-select" class="month-select">
+            <option value="11">Tháng 11</option>
+            <option value="10">Tháng 10</option>
+            <option value="9">Tháng 9</option>
+            <option value="8">Tháng 8</option>
+            <option value="7">Tháng 7</option>
+            <option value="6">Tháng 6</option>
+            <option value="5">Tháng 5</option>
+            <option value="4">Tháng 4</option>
+        </select>
+
+        <select id="year-select" class="year-select">
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+        </select>
     </div>
-    <script>
-        function goback() {
-            window.location.href = '../MyBudget.html';
-        }
-    </script>
 
+    <!-- Biểu đồ thu chi ngân sách -->
+    <div class="chart-container">
+        <canvas id="budgetChart"></canvas>
+    </div>
+
+    <!-- Danh sách giao dịch -->
+    <div class="transaction-list">
+        <h3>Giao dịch gần đây</h3>
+        <ul>
+            <li>21/11/2024: Thai +5000000đ (hoa hồng)</li>
+            <li>20/11/2024: An +20000000đ (tiền lương)</li>
+            <li>18/11/2024: Minh -500000đ (tiền xăng)</li>
+            <li>14/11/2024: An -200000đ (ăn sáng)</li>
+            <li>10/11/2024: Thai -400000đ (ăn tối)</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function goback() {
+        window.location.href = '../MyBudget.html';
+    }
+
+    // Dữ liệu cho biểu đồ thu và chi
+    const data = {
+        labels: ['21/11', '20/11', '18/11', '14/11', '10/11'], // Ngày giao dịch
+        datasets: [{
+            label: 'Thu nhập',
+            data: [5000000, 20000000, 0, 0, 0], // Dữ liệu thu nhập
+            borderColor: 'green',
+            backgroundColor: 'rgba(0, 255, 0, 0.2)',
+            fill: true,
+            tension: 0.4
+        }, {
+            label: 'Chi phí',
+            data: [0, 0, -500000, -200000, -400000], // Dữ liệu chi phí
+            borderColor: 'red',
+            backgroundColor: 'rgba(255, 0, 0, 0.2)',
+            fill: true,
+            tension: 0.4
+        }]
+    };
+
+    // Cấu hình biểu đồ
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Biểu đồ thu chi ngân sách'
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false
+                },
+                legend: {
+                    position: 'top',
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true
+                },
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
+
+    // Tạo biểu đồ
+    var budgetChart = new Chart(
+        document.getElementById('budgetChart'),
+        config
+    );
+</script>
 </body>
 </html>

@@ -1,132 +1,216 @@
-/* styles.css */
-body {
+/* Basic Reset */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 .container {
-    max-width: 360px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    min-height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-/* Header */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #75F78D;
+
+header {
+    background-color: #75f78d;
     padding: 10px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
     color: #000;
-    font-size: 16px;
+    font-size: 24px;
 }
 
-.header h1 {
-    font-size: 16px;
-    margin: 0;
-    text-align: center;
-    flex: 1;
+.back-icon,
+.menu-icon {
+    font-size: 28px;
+    color: #000;
+    cursor: pointer;
 }
 
-.back-btn {
-    background: none;
+main {
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style cho dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px; /* Tạo khoảng cách giữa dropdown và hình ảnh */
+}
+
+/* Style cho nút dropdown */
+.dropdown-btn {
+    background-color: #75F78D;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
     border: none;
-    font-size: 18px;
-    color: #000;
+    cursor: pointer;
+    border: 1px solid #000;
+    margin-top: 40px;
+}
+
+/* Ẩn dropdown content khi không có tương tác */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Style cho các item trong dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
     text-decoration: none;
-    margin-right: auto;
+    display: block;
 }
 
-.options-icon {
+/* Chỉnh màu khi hover vào item */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Hiển thị dropdown content khi hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-btn {
+    background-color: #75F78D;
+}
+
+/* Style cho hình ảnh */
+.f-icon {
+    margin-top: 20px; /* Khoảng cách giữa dropdown và hình ảnh */
+    width: 150px; /* Chỉnh kích thước của hình ảnh */
+    height: auto; /* Giữ tỷ lệ cho hình ảnh */
+}
+
+.member {
+    margin-top: 79px;
+}
+
+.memberimg {
+    width: 270px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.back-icon,
+.menu-icon {
     font-size: 20px;
+    cursor: pointer;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    width: 160px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 1000;
+}
+.modal div {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+.modal div:last-child {
+    border-bottom: none;
 }
 
-/* Form Container */
-.form-container {
+a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: inherit; /* Dùng màu chữ của phần tử chứa nó */
+    display: block; /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
+}
+.Add {
+    background-color: #75F78D;
+    cursor: pointer;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 50px;
+}
+#budget-form {
     padding: 20px;
+}
+form {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    flex: 1;
+    gap: 15px;
 }
 
-.form-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+label {
+    font-size: 14px;
+    color: #333;
 }
 
-.form-item-horizontal {
+input,
+select,
+textarea,
+button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #75f78d;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #28a428;
+}
+
+textarea {
+    resize: none;
+    height: 60px;
+}
+
+.currency-input {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     gap: 10px;
 }
 
-.form-item label,
-.form-item-horizontal label {
-    font-size: 14px;
-    color: #333;
-    white-space: nowrap;
+.currency-input select {
+    max-width: 80px;
 }
 
-.form-item input,
-.form-item-horizontal input,
-.form-item-horizontal select {
-    border: 1px solid #000;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 14px;
-}
-
-.small-input {
-    width: 50px; /* Kích thước nhỏ cho trường amount */
-    text-align: center;
-}
-
-.small-select {
-    width: 70px; /* Kích thước nhỏ cho dropdown */
-}
-
-.form-item-horizontal input,
-.form-item-horizontal select {
-    flex: none; /* Không mở rộng quá mức */
-}
-
-/* Button at the Bottom */
-.button-container {
-    padding: 20px;
+.icon-input {
     display: flex;
-    justify-content: center;
-    background-color: #ffffff;
+    gap: 10px;
 }
 
-.action-btn {
-    background-color: #75F78D;
-    border: none;
-    border-radius: 25px;
-    padding: 12px 20px;
-    font-size: 16px;
-    color: #000;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.action-btn:hover {
-    background-color: #76d476;
-}
-.small-select {
-    width: auto; /* Đặt kích thước tự động để phù hợp với nội dung */
-    min-width: 100px; /* Đặt chiều rộng tối thiểu đủ để hiển thị đầy đủ đơn vị tiền tệ */
-    padding: 5px; /* Đảm bảo khoảng cách bên trong dropdown */
-    text-align: center; /* Căn giữa nội dung */
+.icon-input select {
+    flex-grow: 1;
 }
