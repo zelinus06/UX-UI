@@ -17,7 +17,12 @@ body {
   padding: 10px;
   margin-bottom: 20px;
 }
-
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  flex-grow: 1;
+  text-align: center;
+}
 .header-content {
   display: flex;
   justify-content: space-between;

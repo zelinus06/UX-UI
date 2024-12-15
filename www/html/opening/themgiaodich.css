@@ -17,9 +17,9 @@ body {
 
 /* Container */
 .container {
-  border-radius: 8px;
+  /* border-radius: 8px; */
   width: 100%;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 /* Header */
@@ -27,9 +27,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #a7f1a3;
+  background-color: #75f78d;
   padding: 10px 15px;
-  border-radius: 8px 8px 0 0;
+  /* border-radius: 8px 8px 0 0; */
   color: #333;
 }
 
@@ -39,13 +39,14 @@ body {
 }
 
 .header span {
-  font-size: 18px;
+  font-size: 28px;
   cursor: pointer;
 }
 
 /* Form */
 .transaction-form {
   margin-top: 20px;
+  padding: 20px;
 }
 
 .form-group {
@@ -147,7 +148,12 @@ body {
   display: flex;
   align-items: center;
 }
-
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  flex-grow: 1;
+  text-align: center;
+}
 .currency {
   margin-left: 10px;
   font-weight: normal;
