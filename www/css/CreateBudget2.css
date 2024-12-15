@@ -156,6 +156,7 @@ a {
 }
 #budget-form {
     padding: 20px;
+    margin-top: 60px;
 }
 form {
     display: flex;
