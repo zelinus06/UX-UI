@@ -3,149 +3,67 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
     font-family: Arial, sans-serif;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+}
+
+.container {
+    width: 100%;
     background-color: #fff;
-  }
-  
-  header {
-    background-color: #75F78D;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    background-color: #75f78d;
     padding: 10px;
-  }
-  
-  .header-content {
+}
+
+.header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  header h1 {
+}
+
+header h1 {
     color: #000;
     font-size: 24px;
-  }
-  
-  .back-icon, .menu-icon {
+}
+
+.back-icon,
+.menu-icon {
     font-size: 28px;
     color: #000;
     cursor: pointer;
-  }
-  
-  main {
+}
+
+main {
+    min-height: 500px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    flex-grow: 1;
-  }
-  
-  .description {
-    font-size: 16px;
-    text-align: center;
-    margin: 20px;
-  }
-  
-  .create-button {
-    background-color: #75F78D;
-    color: #000;
-    font-size: 16px;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .create-button:hover {
-    background-color: #75F78D;
-  }
-  
-  @media (max-width: 480px) {
-    .header-content h1 {
-      font-size: 18px;
-    }
-  
-    .back-icon, .menu-icon {
-      font-size: 24px;
-    }
-  
-    .description {
-      font-size: 14px;
-    }
-  
-    .create-button {
-      font-size: 14px;
-    }
-  }
-
-  /* Căn chỉnh các phần tử trong .row */
-.row {
-    display: flex;
-    align-items: center;  /* Căn giữa các phần tử theo chiều dọc */
-    gap: 10px;  /* Khoảng cách giữa các phần tử trong row */
-    margin-bottom: 10px; /* Khoảng cách giữa các dòng row */
-    margin-top: 2rem;
-}
-
-/* Đảm bảo rằng các input có cùng chiều cao */
-input {
-    height: 30px;
-    padding: 5px;
-}
-
-/* Đảm bảo hình ảnh có kích thước phù hợp */
-.footer-icon {
-    width: 20px; /* Điều chỉnh kích thước hình ảnh theo ý muốn */
-    height: 20px;
-}
-
-/* Đảm bảo đoạn văn bản có căn chỉnh đẹp mắt */
-p {
-    margin: 0;  /* Loại bỏ khoảng cách mặc định của p */
-    font-size: 16px;
-}
-
-input {
-    border: none;          /* Loại bỏ các viền mặc định */
-    border-bottom: 1px solid #444242; /* Thêm border chỉ ở dưới, màu đen và độ dày 2px */
-    outline: none;         /* Loại bỏ viền xung quanh khi focus */
-    padding: 5px 0;        /* Khoảng cách bên trong, chỉ giữ khoảng cách trên và dưới */
-    font-size: 16px;       /* Kích thước chữ */
-    width: 100%;           /* Tùy chọn: để input chiếm toàn bộ chiều rộng của thẻ chứa */
-}
-
-input:focus {
-    border: none;         
-    border-bottom: 1px solid #444242;
-    box-shadow: 0 1px 5px rgba(178, 28, 28, 0); /* Tạo hiệu ứng bóng mờ khi focus */
-}
-
-.inputmoney {
-    width: 60%;
 }
 
 /* Style cho dropdown */
 .dropdown {
     position: relative;
     display: inline-block;
+    margin-bottom: 20px; /* Tạo khoảng cách giữa dropdown và hình ảnh */
 }
 
 /* Style cho nút dropdown */
 .dropdown-btn {
-    background-color: #ffffff;
+    background-color: #75F78D;
     color: black;
     padding: 10px 20px;
     font-size: 16px;
     border: none;
     cursor: pointer;
     border: 1px solid #000;
+    margin-top: 40px;
 }
 
 /* Ẩn dropdown content khi không có tương tác */
@@ -177,75 +95,164 @@ input:focus {
 }
 
 .dropdown:hover .dropdown-btn {
-    background-color: #fff;
+    background-color: #75F78D;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;  /* Đặt các phần tử con theo chiều dọc */
-  justify-content: flex-end;  /* Đẩy các phần tử về cuối */
-  height: 100%;  /* Đảm bảo phần tử cha chiếm đủ chiều cao */
+/* Style cho hình ảnh */
+.f-icon {
+    margin-top: 20px; /* Khoảng cách giữa dropdown và hình ảnh */
+    width: 150px; /* Chỉnh kích thước của hình ảnh */
+    height: auto; /* Giữ tỷ lệ cho hình ảnh */
 }
 
-.create-button {
-  margin-top: auto; /* Đẩy nút xuống cuối cùng */
-  background-color: #75F78D; /* Màu nền nút */
-  color: black; /* Màu chữ */
-  padding: 15px 32px; /* Padding cho nút */
-  border: none; /* Bỏ viền */
-  border-radius: 25px; /* Làm tròn góc nút */
-  cursor: pointer; /* Con trỏ chuột */
-  text-align: center; /* Canh giữa chữ */
+.member {
+    margin-top: 79px;
 }
 
-.create-button:hover {
-  background-color: #07E12F; /* Màu nền khi hover */
+.memberimg {
+    width: 270px;
 }
 
-.addPerson {
-  font-size: 24px;            /* Kích thước chữ lớn hơn */
-  padding: 10px 20px;         /* Khoảng cách trong nút (top/bottom, left/right) */
-  border-radius: 1px;         /* Làm tròn góc nút để giống hình tròn */
-  background-color: #fff; /* Màu nền của nút */
-  color: black;               /* Màu chữ */
-  border: 1px solid;               /* Bỏ viền */
-  width: 35px;                /* Đặt chiều rộng nút */
-  height: 35px;               /* Đặt chiều cao nút */
-  text-align: center;         /* Canh giữa chữ */
-  display: flex;
-  justify-content: center;    /* Canh giữa nội dung trong nút */
-  align-items: center;        /* Canh giữa nội dung trong nút */
-  cursor: pointer;           /* Con trỏ chuột */
+body {
+    font-family: Arial, sans-serif;
 }
 
-.addPerson:hover {
-  background-color: #07E12F;  /* Màu nền khi hover */
+.back-icon,
+.menu-icon {
+    font-size: 20px;
+    cursor: pointer;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    width: 160px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 1000;
+}
+.modal div {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+.modal div:last-child {
+    border-bottom: none;
 }
 
-.output-item {
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc;   /* Đặt border cho ô chứa nội dung */
-  padding: 5px 10px;         /* Khoảng cách trong ô */
-  margin-top: 10px;          /* Khoảng cách giữa các ô */
-  background-color: #f9f9f9; /* Màu nền cho ô */
-  border-radius: 5px;        /* Làm tròn góc */
+a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: inherit; /* Dùng màu chữ của phần tử chứa nó */
+    display: block; /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
+}
+.Add {
+    background-color: #75F78D;
+    cursor: pointer;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 50px;
+}
+#budget-form {
+    padding: 20px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.output-item span.delete-btn {
-  cursor: pointer;          /* Thay đổi con trỏ khi hover vào dấu X */
-  color: rgb(182, 1, 1);                /* Màu chữ của dấu X */
-  margin-left: 10px;         /* Khoảng cách giữa nội dung và dấu X */
+label {
+    font-size: 14px;
+    color: #333;
 }
 
-.output-item span.content {
-  flex-grow: 1;              /* Để nội dung chiếm phần còn lại */
+input,
+select,
+textarea,
+button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
-#output {
-  margin-top: 20px; /* Khoảng cách giữa input và output */
+button {
+    background-color: #75f78d;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
 }
 
+button:hover {
+    background-color: #28a428;
+}
 
+textarea {
+    resize: none;
+    height: 60px;
+}
 
-  
+.currency-input {
+    display: flex;
+    gap: 10px;
+}
+
+.currency-input select {
+    max-width: 80px;
+}
+
+.icon-input {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-input select {
+    flex-grow: 1;
+}
+
+.member-list {
+    margin-top: 20px;
+}
+.member-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Nút Xóa Thành Viên */
+.remove-btn {
+    width: 80px; /* Chiều rộng cố định */
+    height: 35px; /* Chiều cao cố định */
+    background-color: #f44336; /* Màu nền đỏ */
+    color: white; /* Màu chữ */
+    border: none; /* Loại bỏ đường viền */
+    border-radius: 5px; /* Bo góc */
+    font-size: 14px; /* Kích thước chữ */
+    cursor: pointer; /* Con trỏ chuột dạng tay */
+
+    /* Đảm bảo chữ ở chính giữa */
+    display: flex; /* Sử dụng Flexbox */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+}
+
+/* Hiệu ứng khi hover */
+.remove-btn:hover {
+    background-color: #d32f2f; /* Màu nền đậm hơn khi hover */
+}
+
+.list {
+    display: none;
+}
+
+.label-bold {
+    font-weight: bold;
+}

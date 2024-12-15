@@ -1,110 +1,231 @@
-/* styles.css */
-body {
+/* Basic Reset */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
 }
 
 .container {
-    max-width: 360px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    min-height: 100vh;
+    height: 100vh;
+    background-color: #fff;
 }
 
-/* Header */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #75F78D;
+header {
+    background-color: #75f78d;
     padding: 10px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
     color: #000;
-    font-size: 16px;
+    font-size: 24px;
 }
 
-.header h1 {
-    font-size: 16px;
-    margin: 0;
-    text-align: center;
-    flex: 1;
+.back-icon,
+.menu-icon {
+    font-size: 28px;
+    color: #000;
+    cursor: pointer;
 }
 
-.back-btn {
-    background: none;
+main {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style cho dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px; /* Tạo khoảng cách giữa dropdown và hình ảnh */
+}
+
+/* Style cho nút dropdown */
+.dropdown-btn {
+    background-color: #75f78d;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
     border: none;
-    font-size: 18px;
-    color: #000;
+    cursor: pointer;
+    border: 1px solid #000;
+    margin-top: 40px;
+}
+
+/* Ẩn dropdown content khi không có tương tác */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Style cho các item trong dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
     text-decoration: none;
-    margin-right: auto;
+    display: block;
 }
 
-.options-icon {
+/* Chỉnh màu khi hover vào item */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Hiển thị dropdown content khi hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropdown-btn {
+    background-color: #75f78d;
+}
+
+/* Style cho hình ảnh */
+.f-icon {
+    margin-top: 20px; /* Khoảng cách giữa dropdown và hình ảnh */
+    width: 150px; /* Chỉnh kích thước của hình ảnh */
+    height: auto; /* Giữ tỷ lệ cho hình ảnh */
+}
+
+.member {
+    margin-top: 79px;
+}
+
+.memberimg {
+    width: 270px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.back-icon,
+.menu-icon {
     font-size: 20px;
+    cursor: pointer;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    width: 160px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 1000;
+}
+.modal div {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+.modal div:last-child {
+    border-bottom: none;
 }
 
-/* Content */
-.content {
+a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: inherit; /* Dùng màu chữ của phần tử chứa nó */
+    display: block; /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
+}
+.Add {
+    background-color: #75f78d;
+    cursor: pointer;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 50px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.container2 {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
-
-.content h2 {
+h2 {
     font-size: 18px;
-    margin-bottom: 20px;
+    color: #333;
+    margin-bottom: 15px;
 }
 
-/* Budget Card */
-.budget-card {
-    background-color: #75F78D;
-    border-radius: 10px;
+.budget-item {
+    background-color: #75f78d;
+    color: #fff;
     padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    margin-bottom: 10px;
     position: relative;
 }
 
-.card-header {
+.budget-item .actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    gap: 10px;
 }
 
-.card-title {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.close-btn {
-    font-size: 18px;
-    color: #000;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.card-body p {
-    margin: 10px 0;
-    font-size: 14px;
-}
-
-.card-footer {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 10px;
-}
-
-.edit-btn {
+.budget-item button {
     background: none;
     border: none;
-    font-size: 16px;
-    color: #000;
-    text-decoration: none;
+    color: #fff;
     cursor: pointer;
+    font-size: 16px;
 }
 
-h1 {
-    font-weight: normal; /* Hoặc giá trị bạn muốn, ví dụ: 400 */
+.budget-item button:hover {
+    opacity: 0.8;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50px;
+    right: 10px;
+    width: 160px;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 1000;
+}
+.modal div {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+.modal div:last-child {
+    border-bottom: none;
+}
+
+a {
+    text-decoration: none;  /* Bỏ gạch chân */
+    color: inherit;         /* Dùng màu chữ của phần tử chứa nó */
+    display: block;         /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
 }
 

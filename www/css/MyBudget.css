@@ -38,87 +38,6 @@ header h1 {
     cursor: pointer;
 }
 
-main {
-    display: flex;
-    flex-direction: column; /* Đảm bảo các phần tử trong main sẽ được xếp theo cột */
-    align-items: center;
-}
-
-/* Style cho dropdown */
-.dropdown {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 20px; /* Tạo khoảng cách giữa dropdown và hình ảnh */
-}
-
-/* Style cho nút dropdown */
-.dropdown-btn {
-    background-color: #75F78D;
-    color: black;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border: 1px solid #000;
-    margin-top: 40px;
-}
-
-/* Ẩn dropdown content khi không có tương tác */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-/* Style cho các item trong dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-/* Chỉnh màu khi hover vào item */
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-/* Hiển thị dropdown content khi hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropdown-btn {
-    background-color: #75F78D;
-}
-
-/* Style cho hình ảnh */
-.f-icon {
-    margin-top: 20px; /* Khoảng cách giữa dropdown và hình ảnh */
-    width: 150px;     /* Chỉnh kích thước của hình ảnh */
-    height: auto;     /* Giữ tỷ lệ cho hình ảnh */
-}
-
-.member {
-    margin-top:79px;
-}
-
-.memberimg {
-    width: 270px;
-}
-
-
-body {
-    font-family: Arial, sans-serif;
-}
-
-.back-icon, .menu-icon {
-    font-size: 20px;
-    cursor: pointer;
-}
 .modal {
     display: none;
     position: fixed;
@@ -130,18 +49,219 @@ body {
     border-radius: 10px;
     z-index: 1000;
 }
+
 .modal div {
     padding: 10px;
     border-bottom: 1px solid #ccc;
     text-align: center;
 }
+
 .modal div:last-child {
     border-bottom: none;
 }
 
 a {
-    text-decoration: none;  /* Bỏ gạch chân */
-    color: inherit;         /* Dùng màu chữ của phần tử chứa nó */
-    display: block;         /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
+    text-decoration: none;
+    color: inherit;
+    display: block;
 }
+
+/* Content */
+.content-container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+/* Dropdown ngày tháng */
+.dropdown-container {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.dropdown-btn {
+    background-color: #28a428;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+    font-size: 18px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Hình tròn với số tiền */
+.circle-container {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.circle {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    background-color: #28a428;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.amount {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.currency {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+/* Danh sách thành viên */
+.member-list {
+    margin-top: 30px;
+}
+
+.member-item {
+    background-color: #75f78d;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.member-item:hover {
+    transform: translateY(-10px);
+}
+
+.member-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.member-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.member-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.member-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.member-role {
+    font-size: 16px;
+    color: #555;
+}
+
+.contribution-info,
+.split-info {
+    font-size: 14px;
+    color: #28a428;
+    margin-top: 5px;
+}
+
+.member-item a:hover .member-details {
+    color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dropdown-btn {
+        width: 80px;
+        font-size: 14px;
+    }
+
+    .circle {
+        width: 140px;
+        height: 140px;
+    }
+
+    .amount {
+        font-size: 24px;
+    }
+
+    .member-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .member-avatar {
+        margin-bottom: 10px;
+    }
+
+    .member-details {
+        text-align: left;
+    }
+}
+
+/* Căn giữa member-item */
+.member-list {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa theo chiều ngang */
+    justify-content: center; /* Căn giữa theo chiều dọc */
+    height: 100%; /* Đảm bảo chiều cao đủ để căn giữa theo chiều dọc */
+}
+
+/* Căn giữa các item bên trong */
+.member-item {
+    background-color: #75f78d;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Tăng kích thước của item khi hover */
+.member-item:hover {
+    transform: translateY(-10px);
+}
+
 

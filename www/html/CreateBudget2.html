@@ -18,30 +18,47 @@
 
     <main>
         <div class="content">
-            <div class="row">
-                <p>Tên:</p>
-                <input></input>
-            </div>
-            <div class="row">
-                <img src="../img/Wallet Money.png" class="footer-icon">
-                <input class="inputmoney"></input>
-                <div class="dropdown">
-                    <button class="dropdown-btn">VND</button>
-                    <div class="dropdown-content">
-                        <a href="#" class="dropdown-item" data-value="VND">VND</a>
-                        <a href="#" class="dropdown-item" data-value="USD">USD</a>
-                        <a href="#" class="dropdown-item" data-value="Pound">Pound</a>
-                        <a href="#" class="dropdown-item" data-value="Yen">Yen</a>
-                    </div>
-                </div>                
-            </div>
-            <div class="row">
-                <img src="../img/User Search.png" class="footer-icon">
-                <input id="inputField" type="text">
-                <button class="addPerson" onclick="addInputValue()">+</button>
-            </div>
-            <div id="output"></div>
-            <button class="create-button" onclick="goToHomepage()">Tạo mới</button>
+            <Main>
+                <div class="container">
+                    <form id="budget-form">
+                        <label class="label-bold" for="amount">Nhập tên ngân sách:</label>
+                        <div class="name-input">
+                            <input type="number" name="amount" placeholder="Enter amount" />
+                        </div>
+
+                        <label class="label-bold" for="amount">Số tiền khởi điểm:</label>
+                        <div class="currency-input">
+                            <input type="number" id="amount" name="amount" placeholder="Enter amount" />
+                            <select id="currency" name="currency">
+                                <option value="usd">USD</option>
+                                <option value="vnd">VND</option>
+                                <option value="eur">EURO</option>
+                                <!-- Add more currencies -->
+                            </select>
+                        </div>
+
+                        <label class="label-bold" for="amount">Thêm thành viên:</label>
+                        <div class="currency-input">
+                            <input type="text" id="memberName" name="amount" placeholder="Nhập tên thành viên" />
+                            <select id="memberRole" name="currency">
+                                <option value="father">Bố</option>
+                                <option value="mother">Mẹ</option>
+                                <option value="child">Con</option>
+                                <!-- Add more roles -->
+                            </select>
+                            <button id="addMemberBtn">Thêm</button>
+                        </div>
+
+                        <div class="member-list" id="memberList">
+                            <label class="label-bold list" for="amount">Danh sách thành viên:</label>
+                        </div>
+
+                        <a href="./MyBudget.html">
+                            <button type="button" id="create-limit">Tạo ngân sách</button>
+                        </a>
+                    </form>
+                </div>
+            </Main>
         </div>
     </main>
   </div>
@@ -132,6 +149,58 @@ function goBack() {
 function goToHomepage() {
     window.location.href = "MyBudget.html";
 }
+</script>
+
+<script>
+    const addMemberBtn = document.getElementById('addMemberBtn');
+    const memberNameInput = document.getElementById('memberName');
+    const memberRoleSelect = document.getElementById('memberRole');
+    const memberListDiv = document.getElementById('memberList');
+    const memberListLabel = memberListDiv.querySelector('.list'); // Lấy thẻ label
+
+    // Hàm kiểm tra và hiển thị/ẩn thẻ label
+    function updateMemberListLabel() {
+        const memberItems = memberListDiv.querySelectorAll('.member-item');
+        if (memberItems.length > 0) {
+            memberListLabel.style.display = 'block'; // Hiển thị thẻ label
+        } else {
+            memberListLabel.style.display = 'none'; // Ẩn thẻ label
+        }
+    }
+
+    addMemberBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const memberName = memberNameInput.value.trim();
+        const memberRole = memberRoleSelect.value;
+
+        if (!memberName) {
+            alert('Vui lòng nhập tên thành viên!');
+            return;
+        }
+
+        const memberItem = document.createElement('div');
+        memberItem.className = 'member-item';
+
+        memberItem.innerHTML = `
+        <span><strong>${memberName}</strong> - ${memberRole}</span>
+        <button class="remove-btn">Xóa</button>
+    `;
+
+        // Xử lý sự kiện xóa thành viên
+        memberItem.querySelector('.remove-btn').addEventListener('click', () => {
+            memberItem.remove();
+            updateMemberListLabel(); // Cập nhật tiêu đề khi xóa
+        });
+
+        memberListDiv.appendChild(memberItem);
+        memberNameInput.value = '';
+        updateMemberListLabel(); // Cập nhật tiêu đề khi thêm
+    });
+
+    // Đảm bảo tiêu đề được ẩn ban đầu
+    updateMemberListLabel();
+
 </script>
 </body>
 </html>

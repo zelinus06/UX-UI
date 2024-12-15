@@ -1,25 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creat Budget</title>
-  <link rel="stylesheet" href="../css/CircleChart.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biểu đồ ngân sách</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            background-color: #6ABF4B;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header p {
+            font-size: 22px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .back-icon, .menu-icon {
+            font-size: 28px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+        }
+
+        .dropdown-btn {
+            background-color: #6ABF4B;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-btn:hover {
+            background-color: #5a9b40;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-btn {
+            background-color: #5a9b40;
+        }
+
+        /* Hình ảnh */
+        .f-icon {
+            margin-top: 20px;
+            width: 250px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .memberimg {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            width: 180px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        .modal div {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .modal div:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Responsive styles */
+        .chart-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Make the charts responsive */
+        canvas {
+            width: 100% !important;
+            height: auto !important;
+        }
+        .marginHeader {
+            margin-top: 45px;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
+<div class="container">
     <header>
-      <div class="header-content">
-        <span class="back-icon" onclick="goBack()">&#x276E;</span>
-        <p>Biểu đồ ngân sách</p>
-        <span class="menu-icon" onclick="toggleModal()">&#x22EE;</span>
-      </div>
+        <div class="header-content">
+            <span class="back-icon" onclick="goBack()">&#x276E;</span>
+            <p>Biểu đồ ngân sách</p>
+            <span class="menu-icon" onclick="toggleModal()">&#x22EE;</span>
+        </div>
     </header>
 
     <main>
         <div class="content">
             <div class="dropdown">
-                <button class="dropdown-btn">10/2024</button>
+                <button class="dropdown-btn" id="dropdownBtn">10/2024</button>
                 <div class="dropdown-content">
                     <a href="#" class="dropdown-item" data-value="10/2024">10/2024</a>
                     <a href="#" class="dropdown-item" data-value="09/2024">09/2024</a>
@@ -30,20 +196,32 @@
                     <a href="#" class="dropdown-item" data-value="04/2024">04/2024</a>
                 </div>
             </div>
-    </main>
-    <main>
-        <img src="../img/Thu nhập ròng.png" class="f-icon memberimg">
-    </main>
-    <main>
-        <img src="../img/Biểu đồ đóng góp.png" class="f-icon memberimg">
-    </main>
-    <main>
-        <img src="../img/Biểu đồ chi tiêu.png" class="f-icon memberimg">
-    </main>
-  </div>
+        </div>
 
+        <!-- Chú thích cho Biểu đồ Thu/Chi -->
+        <h1>Biểu đồ Thu và Chi</h1>
+        <div class="chart-container">
+            <!-- Line Chart: Thu và Chi -->
+            <canvas id="lineChart"></canvas>
+        </div>
 
-  <div class="modal" id="menuModal">
+        <!-- Chú thích cho Biểu đồ Đóng góp -->
+        <h1 class="marginHeader">Biểu đồ Đóng góp</h1>
+        <div class="chart-container">
+            <!-- Pie Chart: Đóng góp -->
+            <canvas id="contributionChart"></canvas>
+        </div>
+
+        <!-- Chú thích cho Biểu đồ Chi tiêu -->
+        <h1 class="marginHeader">Biểu đồ Chi tiêu</h1>
+        <div class="chart-container">
+            <!-- Pie Chart: Chi tiêu -->
+            <canvas id="spendingChart"></canvas>
+        </div>
+    </main>
+</div>
+
+<div class="modal" id="menuModal">
     <a href="./setting/frame24.html">
         <div>Thiết lập giới hạn</div>
     </a>
@@ -55,68 +233,94 @@
     </a>
 </div>
 
-
 <script>
-    function toggleModal() {
-        var modal = document.getElementById("menuModal");
-        if (modal.style.display === "none" || modal.style.display === "") {
-            modal.style.display = "block";
-        } else {
-            modal.style.display = "none";
-        }
-    }
+    // Dữ liệu cho biểu đồ 2 đường: Thu và Chi
+    var lineChartData = {
+        labels: ['01/2024', '02/2024', '03/2024', '04/2024', '05/2024'],  // Thời gian
+        datasets: [{
+            label: 'Thu nhập',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            data: [5000, 6000, 5500, 7000, 6500],  // Thu nhập qua các tháng
+            fill: false,
+            tension: 0.1
+        }, {
+            label: 'Chi tiêu',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            data: [3000, 4000, 3500, 4500, 4000],  // Chi tiêu qua các tháng
+            fill: false,
+            tension: 0.1
+        }]
+    };
 
-    // Close the modal if clicked outside of it
-    window.onclick = function(event) {
-        var modal = document.getElementById("menuModal");
-        if (event.target != modal && event.target != document.querySelector('.menu-icon')) {
-            modal.style.display = "none";
-        }
-    }
-</script>
+    // Dữ liệu cho biểu đồ tròn: Đóng góp của 2 người
+    var contributionData = {
+        labels: ['Người 1', 'Người 2'],
+        datasets: [{
+            label: 'Đóng góp',
+            data: [60, 40],  // Phần trăm đóng góp của mỗi người
+            backgroundColor: ['#36A2EB', '#FF6384'],
+            hoverOffset: 4
+        }]
+    };
 
-  <script src="script.js"></script>
-  <script>
-    // Lấy nút dropdown
-    var dropdown = document.querySelector('.dropdown-btn');
-    
-    // Lấy menu dropdown
-    var dropdownContent = document.querySelector('.dropdown-content');
-    
-    // Lấy tất cả các mục trong dropdown
-    var dropdownItems = document.querySelectorAll('.dropdown-item');
-    
-    // Khi bấm vào nút, toggle hiển thị dropdown
-    dropdown.addEventListener('click', function() {
-        dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+    // Dữ liệu cho biểu đồ tròn: Chi tiêu của 3 người
+    var spendingData = {
+        labels: ['Người 1', 'Người 2', 'Người 3'],
+        datasets: [{
+            label: 'Chi tiêu',
+            data: [30, 40, 30],  // Phần trăm chi tiêu của từng người
+            backgroundColor: ['#FF5733', '#33FF57', '#3357FF'],
+            hoverOffset: 4
+        }]
+    };
+
+    // Khởi tạo biểu đồ 2 đường
+    var lineChartCtx = document.getElementById('lineChart').getContext('2d');
+    new Chart(lineChartCtx, {
+        type: 'line',
+        data: lineChartData,
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     });
-    
-    // Khi chọn mệnh giá trong dropdown
-    dropdownItems.forEach(function(item) {
-        item.addEventListener('click', function(event) {
-            // Lấy giá trị của mệnh giá
-            var selectedValue = event.target.getAttribute('data-value');
-            
-            // Cập nhật giá trị trong nút dropdown
-            dropdown.textContent = selectedValue;
-            
-            // Đóng dropdown
-            dropdownContent.style.display = 'none';
+
+    // Khởi tạo biểu đồ tròn cho đóng góp
+    var contributionCtx = document.getElementById('contributionChart').getContext('2d');
+    new Chart(contributionCtx, {
+        type: 'pie',
+        data: contributionData
+    });
+
+    // Khởi tạo biểu đồ tròn cho chi tiêu
+    var spendingCtx = document.getElementById('spendingChart').getContext('2d');
+    new Chart(spendingCtx, {
+        type: 'pie',
+        data: spendingData
+    });
+
+    // Xử lý chọn tháng từ dropdown
+    document.querySelectorAll('.dropdown-item').forEach(function(item) {
+        item.addEventListener('click', function() {
+            var selectedValue = this.getAttribute('data-value');
+            document.getElementById('dropdownBtn').textContent = selectedValue; // Cập nhật nút dropdown
         });
     });
 
-    // Đóng dropdown khi bấm ra ngoài
-    window.addEventListener('click', function(event) {
-        if (!event.target.matches('.dropdown-btn')) {
-            dropdownContent.style.display = 'none';
-        }
-    });
+    // Hàm để mở modal
+    function toggleModal() {
+        var modal = document.getElementById('menuModal');
+        modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+    }
 
-
+    // Hàm quay lại
     function goBack() {
-        window.location.href = './MyBudget.html';// Quay lại trang trước đó
-}
-
+        window.location.href = './MyBudget.html'; // Thay thế 'index.html' bằng đường dẫn tới trang bạn muốn
+    }
 </script>
 </body>
 </html>
