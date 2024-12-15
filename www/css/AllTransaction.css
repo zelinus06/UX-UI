@@ -12,7 +12,7 @@ body {
 }
 header {
   background-color: #75f78d !important;
-  padding: 10px;
+  /*padding: 10px;*/
 }
 .header-content {
   display: flex;
