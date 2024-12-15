@@ -10,6 +10,26 @@ body {
   color: black;
   background: #ffffff;
 }
+header {
+  background-color: #75f78d !important;
+  padding: 10px;
+}
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.back-icon,
+.menu-icon {
+  font-size: 28px;
+  color: #000;
+  cursor: pointer;
+}
+span.back-icon {
+  width: fit-content;
+  left: 10px;
+  position: fixed;
+}
 .slick .selected {
   font-weight: bold;
 }
@@ -93,6 +113,7 @@ body {
 }
 
 .content {
+  margin: 20px;
   padding: 10px;
   background-color: #fff;
 }
@@ -317,8 +338,12 @@ a {
   font-size: 28px;
   color: #000;
   right: 20px;
-  position: fixed;
+
   cursor: pointer;
+}
+.menu-icon {
+  right: 30px;
+  position: fixed;
 }
 .transaction-section {
   margin: 20px;

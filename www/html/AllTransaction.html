@@ -17,15 +17,10 @@
     />
   </head>
   <body>
-    <div class="header"></div>
-
-    <div class="content">
-      <div class="total-balance">
-        <div style="display: flex; flex-direction: column; align-items: center">
-          <div style="font-weight: bold">Số dư</div>
-          <div>27.000.000 đ</div>
-        </div>
-
+    <header>
+      <div class="header-content">
+        <span class="back-icon" onclick="goBack()">&#x276E;</span>
+        <p>All Transaction</p>
         <span class="menu-icon" onclick="toggleModal()">&#x22EE;</span>
         <div class="modal" id="menuModal">
           <div class="menu-option">
@@ -37,6 +32,15 @@
           <div class="menu-option">
             <div>Sắp xếp theo mức độ thu chi</div>
           </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="total-balance">
+        <div style="display: flex; flex-direction: column; align-items: center">
+          <div style="font-weight: bold">Số dư</div>
+          <div>27.000.000 đ</div>
         </div>
       </div>
       <div class="slick">
@@ -200,15 +204,14 @@
       </a>
     </div>
 
-    <script src="script.js"></script>
     <script>
       function toggleModal() {
         var modal = document.getElementById("menuModal");
-        if (modal.style.display === "none" || modal.style.display === "") {
-          modal.style.display = "block";
-        } else {
-          modal.style.display = "none";
-        }
+
+        modal.style.display =
+          modal.style.display === "none" || modal.style.display === ""
+            ? "block"
+            : "none";
       }
 
       // Close the modal if clicked outside of it
@@ -221,6 +224,9 @@
           modal.style.display = "none";
         }
       };
+      function goBack() {
+        window.location.href = "./HomePage.html"; // Quay lại trang trước đó
+      }
     </script>
   </body>
 </html>
