@@ -9,8 +9,8 @@
   <body>
     <div class="container">
       <div class="header">
-        <span class="back-arrow" onclick="redirectToHome()">&#x276E;</span>
-        <h2>Thêm giao dịch</h2>
+        <span class="back-arrow" onclick="GoBack()">&#x276E;</span>
+        <h2 class="title">Thêm giao dịch</h2>
         <span class="settings-icon"></span>
       </div>
       <form class="transaction-form">
@@ -96,7 +96,7 @@
           this.classList.add("active");
         });
       });
-      function redirectToHome() {
+      function GoBack() {
         window.location.href = "../Homepage.html"; // Thay đổi đường dẫn nếu cần
       }
     </script>

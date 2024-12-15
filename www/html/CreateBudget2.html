@@ -1,183 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creat Budget</title>
-  <link rel="stylesheet" href="../css/CreateBudget2.css">
-</head>
-<body>
-  <div class="container">
-    <header>
-      <div class="header-content">
-        <span class="back-icon" onclick="goBack()">&#x276E;</span>
-        <p>My Budget</p>
-        <span class="menu-icon"></span>
-      </div>
-    </header>
-
-
-        <div class="content">
-                <div class="container">
-                    <form id="budget-form">
-                        <label class="label-bold" for="amount">Nhập tên ngân sách:</label>
-                        <div class="name-input">
-                            <input type="number" name="amount" placeholder="Enter amount" />
-                        </div>
-
-                        <label class="label-bold" for="amount">Số tiền khởi điểm:</label>
-                        <div class="currency-input">
-                            <input type="number" id="amount" name="amount" placeholder="Enter amount" />
-                            <select id="currency" name="currency">
-                                <option value="usd">USD</option>
-                                <option value="vnd">VND</option>
-                                <option value="eur">EURO</option>
-                                <!-- Add more currencies -->
-                            </select>
-                        </div>
-
-                        <label class="label-bold" for="amount">Thêm thành viên:</label>
-                        <div class="currency-input">
-                            <input type="text" id="memberName" name="amount" placeholder="Nhập tên thành viên" />
-                            <select id="memberRole" name="currency">
-                                <option value="father">Bố</option>
-                                <option value="mother">Mẹ</option>
-                                <option value="child">Con</option>
-                                <!-- Add more roles -->
-                            </select>
-                            <button id="addMemberBtn">Thêm</button>
-                        </div>
-
-                        <div class="member-list" id="memberList">
-                            <label class="label-bold list" for="amount">Danh sách thành viên:</label>
-                        </div>
-
-                        <a href="./MyBudget.html">
-                            <button type="button" id="create-limit">Tạo ngân sách</button>
-                        </a>
-                    </form>
-                </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creat Budget</title>
+    <link rel="stylesheet" href="../css/CreateBudget2.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="header-content">
+          <span class="back-icon" onclick="goBack()">&#x276E;</span>
+          <p class="title">My Budget</p>
+          <span class="menu-icon"></span>
         </div>
-  </div>
+      </header>
 
-  <script src="script.js"></script>
-  <script>
-    // Lấy nút dropdown
-    var dropdown = document.querySelector('.dropdown-btn');
-    
-    // Lấy menu dropdown
-    var dropdownContent = document.querySelector('.dropdown-content');
-    
-    // Lấy tất cả các mục trong dropdown
-    var dropdownItems = document.querySelectorAll('.dropdown-item');
-    
-    // Khi bấm vào nút, toggle hiển thị dropdown
-    dropdown.addEventListener('click', function() {
-        dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
-    });
-    
-    // Khi chọn mệnh giá trong dropdown
-    dropdownItems.forEach(function(item) {
-        item.addEventListener('click', function(event) {
-            // Lấy giá trị của mệnh giá
-            var selectedValue = event.target.getAttribute('data-value');
-            
-            // Cập nhật giá trị trong nút dropdown
-            dropdown.textContent = selectedValue;
-            
-            // Đóng dropdown
-            dropdownContent.style.display = 'none';
+      <div class="content">
+        <div class="container">
+          <form id="budget-form">
+            <label class="label-bold" for="amount">Nhập tên ngân sách:</label>
+            <div class="name-input">
+              <input type="number" name="amount" placeholder="Enter amount" />
+            </div>
+
+            <label class="label-bold" for="amount">Số tiền khởi điểm:</label>
+            <div class="currency-input">
+              <input
+                type="number"
+                id="amount"
+                name="amount"
+                placeholder="Enter amount"
+              />
+              <select id="currency" name="currency">
+                <option value="usd">USD</option>
+                <option value="vnd">VND</option>
+                <option value="eur">EURO</option>
+                <!-- Add more currencies -->
+              </select>
+            </div>
+
+            <label class="label-bold" for="amount">Thêm thành viên:</label>
+            <div class="currency-input">
+              <input
+                type="text"
+                id="memberName"
+                name="amount"
+                placeholder="Nhập tên thành viên"
+              />
+              <select id="memberRole" name="currency">
+                <option value="father">Bố</option>
+                <option value="mother">Mẹ</option>
+                <option value="child">Con</option>
+                <!-- Add more roles -->
+              </select>
+              <button id="addMemberBtn">Thêm</button>
+            </div>
+
+            <div class="member-list" id="memberList">
+              <label class="label-bold list" for="amount"
+                >Danh sách thành viên:</label
+              >
+            </div>
+
+            <a href="./MyBudget.html">
+              <button type="button" id="create-limit">Tạo ngân sách</button>
+            </a>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      // Lấy nút dropdown
+      var dropdown = document.querySelector(".dropdown-btn");
+
+      // Lấy menu dropdown
+      var dropdownContent = document.querySelector(".dropdown-content");
+
+      // Lấy tất cả các mục trong dropdown
+      var dropdownItems = document.querySelectorAll(".dropdown-item");
+
+      // Khi bấm vào nút, toggle hiển thị dropdown
+      dropdown.addEventListener("click", function () {
+        dropdownContent.style.display =
+          dropdownContent.style.display === "block" ? "none" : "block";
+      });
+
+      // Khi chọn mệnh giá trong dropdown
+      dropdownItems.forEach(function (item) {
+        item.addEventListener("click", function (event) {
+          // Lấy giá trị của mệnh giá
+          var selectedValue = event.target.getAttribute("data-value");
+
+          // Cập nhật giá trị trong nút dropdown
+          dropdown.textContent = selectedValue;
+
+          // Đóng dropdown
+          dropdownContent.style.display = "none";
         });
-    });
+      });
 
-    // Đóng dropdown khi bấm ra ngoài
-    window.addEventListener('click', function(event) {
-        if (!event.target.matches('.dropdown-btn')) {
-            dropdownContent.style.display = 'none';
+      // Đóng dropdown khi bấm ra ngoài
+      window.addEventListener("click", function (event) {
+        if (!event.target.matches(".dropdown-btn")) {
+          dropdownContent.style.display = "none";
         }
-    });
+      });
 
+      function addInputValue() {
+        // Lấy giá trị từ ô input
+        var inputValue = document.getElementById("inputField").value;
 
+        // Kiểm tra nếu ô input không rỗng
+        if (inputValue.trim() !== "") {
+          // Tạo phần tử div chứa nội dung và dấu "X"
+          var newItem = document.createElement("div");
+          newItem.classList.add("output-item");
 
-    function addInputValue() {
-    // Lấy giá trị từ ô input
-    var inputValue = document.getElementById('inputField').value;
+          // Thêm nội dung nhập vào ô
+          var text = document.createElement("span");
+          text.innerText = inputValue;
+          text.classList.add("content"); // Thêm class để quản lý nội dung
 
-    // Kiểm tra nếu ô input không rỗng
-    if (inputValue.trim() !== "") {
-        // Tạo phần tử div chứa nội dung và dấu "X"
-        var newItem = document.createElement('div');
-        newItem.classList.add('output-item');
+          // Thêm dấu "X" vào phần tử
+          var deleteBtn = document.createElement("span");
+          deleteBtn.innerText = "x";
+          deleteBtn.classList.add("delete-btn");
+          deleteBtn.onclick = function () {
+            newItem.remove(); // Xóa phần tử khi click vào dấu "X"
+          };
 
-        // Thêm nội dung nhập vào ô
-        var text = document.createElement('span');
-        text.innerText = inputValue;
-        text.classList.add('content'); // Thêm class để quản lý nội dung
+          // Thêm nội dung vào phần tử div
+          newItem.appendChild(text);
 
-        // Thêm dấu "X" vào phần tử
-        var deleteBtn = document.createElement('span');
-        deleteBtn.innerText = 'x';
-        deleteBtn.classList.add('delete-btn');
-        deleteBtn.onclick = function() {
-            newItem.remove();  // Xóa phần tử khi click vào dấu "X"
-        };
+          // Thêm dấu "X" vào cuối cùng
+          newItem.appendChild(deleteBtn);
 
-        // Thêm nội dung vào phần tử div
-        newItem.appendChild(text);
+          // Thêm phần tử div vào khu vực hiển thị output
+          document.getElementById("output").appendChild(newItem);
 
-        // Thêm dấu "X" vào cuối cùng
-        newItem.appendChild(deleteBtn);
-
-        // Thêm phần tử div vào khu vực hiển thị output
-        document.getElementById('output').appendChild(newItem);
-
-        // Sau khi hiển thị, xóa giá trị trong ô input
-        document.getElementById('inputField').value = "";
-    } else {
-        alert("Vui lòng nhập giá trị vào ô input!");
-    }
-}
-
-
-function goBack() {
-    window.history.back(); // Quay lại trang trước đó
-}
-
-function goToHomepage() {
-    window.location.href = "MyBudget.html";
-}
-</script>
-
-<script>
-    const addMemberBtn = document.getElementById('addMemberBtn');
-    const memberNameInput = document.getElementById('memberName');
-    const memberRoleSelect = document.getElementById('memberRole');
-    const memberListDiv = document.getElementById('memberList');
-    const memberListLabel = memberListDiv.querySelector('.list'); // Lấy thẻ label
-
-    // Hàm kiểm tra và hiển thị/ẩn thẻ label
-    function updateMemberListLabel() {
-        const memberItems = memberListDiv.querySelectorAll('.member-item');
-        if (memberItems.length > 0) {
-            memberListLabel.style.display = 'block'; // Hiển thị thẻ label
+          // Sau khi hiển thị, xóa giá trị trong ô input
+          document.getElementById("inputField").value = "";
         } else {
-            memberListLabel.style.display = 'none'; // Ẩn thẻ label
+          alert("Vui lòng nhập giá trị vào ô input!");
         }
-    }
+      }
 
-    addMemberBtn.addEventListener('click', (event) => {
+      function goBack() {
+        window.history.back(); // Quay lại trang trước đó
+      }
+
+      function goToHomepage() {
+        window.location.href = "MyBudget.html";
+      }
+    </script>
+
+    <script>
+      const addMemberBtn = document.getElementById("addMemberBtn");
+      const memberNameInput = document.getElementById("memberName");
+      const memberRoleSelect = document.getElementById("memberRole");
+      const memberListDiv = document.getElementById("memberList");
+      const memberListLabel = memberListDiv.querySelector(".list"); // Lấy thẻ label
+
+      // Hàm kiểm tra và hiển thị/ẩn thẻ label
+      function updateMemberListLabel() {
+        const memberItems = memberListDiv.querySelectorAll(".member-item");
+        if (memberItems.length > 0) {
+          memberListLabel.style.display = "block"; // Hiển thị thẻ label
+        } else {
+          memberListLabel.style.display = "none"; // Ẩn thẻ label
+        }
+      }
+
+      addMemberBtn.addEventListener("click", (event) => {
         event.preventDefault();
 
         const memberName = memberNameInput.value.trim();
         const memberRole = memberRoleSelect.value;
 
         if (!memberName) {
-            alert('Vui lòng nhập tên thành viên!');
-            return;
+          alert("Vui lòng nhập tên thành viên!");
+          return;
         }
 
-        const memberItem = document.createElement('div');
-        memberItem.className = 'member-item';
+        const memberItem = document.createElement("div");
+        memberItem.className = "member-item";
 
         memberItem.innerHTML = `
         <span><strong>${memberName}</strong> - ${memberRole}</span>
@@ -185,19 +194,20 @@ function goToHomepage() {
     `;
 
         // Xử lý sự kiện xóa thành viên
-        memberItem.querySelector('.remove-btn').addEventListener('click', () => {
+        memberItem
+          .querySelector(".remove-btn")
+          .addEventListener("click", () => {
             memberItem.remove();
             updateMemberListLabel(); // Cập nhật tiêu đề khi xóa
-        });
+          });
 
         memberListDiv.appendChild(memberItem);
-        memberNameInput.value = '';
+        memberNameInput.value = "";
         updateMemberListLabel(); // Cập nhật tiêu đề khi thêm
-    });
+      });
 
-    // Đảm bảo tiêu đề được ẩn ban đầu
-    updateMemberListLabel();
-
-</script>
-</body>
+      // Đảm bảo tiêu đề được ẩn ban đầu
+      updateMemberListLabel();
+    </script>
+  </body>
 </html>
