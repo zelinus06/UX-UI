@@ -1,153 +1,162 @@
 /* Reset */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
 }
 
 /* Khung màn hình */
 .screen {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 /* Thanh trạng thái */
 .status-bar {
-    background-color: #eee;
-    padding: 5px 15px;
-    text-align: left;
+  background-color: #eee;
+  padding: 5px 15px;
+  text-align: left;
 }
 
 /* Header */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-    background-color: #75F78D;
-    color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #75f78d;
+  color: black;
 }
 
 .header .back-button {
-    font-size: 20px;
-    cursor: pointer;
-    color: black;
-    text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
 }
 
 .header .title {
-    font-size: 18px;
-    font-weight: bold;
-    flex-grow: 1;
-    text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  flex-grow: 1;
+  text-align: center;
 }
 
 /* Nội dung */
 main {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 10px 15px;
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px 15px;
 }
 
 /* Tiêu đề các phần */
 section h2 {
-    margin: 20px 0 10px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #888;
-    text-transform: uppercase;
+  margin: 20px 0 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #888;
+  text-transform: uppercase;
 }
 
 /* Danh sách mục */
 .item {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
-    font-size: 16px;
-    text-decoration: none;
-    color: #333;
-    position: relative; /* Để định vị mũi tên */
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  text-decoration: none;
+  color: #333;
+  position: relative; /* Để định vị mũi tên */
 }
 
 .item i {
-    margin-right: 10px;
-    color: #666;
+  margin-right: 10px;
+  color: #666;
 }
 
 .item span {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 /* Mũi tên sát lề phải */
 .item .arrow {
-    font-size: 16px;
-    color: #bbb;
-    position: absolute; /* Định vị mũi tên */
-    right: 15px; /* Sát lề phải */
-    top: 50%; /* Canh giữa theo chiều dọc */
-    transform: translateY(-50%); /* Đảm bảo mũi tên nằm giữa */
+  font-size: 16px;
+  color: #bbb;
+  position: absolute; /* Định vị mũi tên */
+  right: 15px; /* Sát lề phải */
+  top: 50%; /* Canh giữa theo chiều dọc */
+  transform: translateY(-50%); /* Đảm bảo mũi tên nằm giữa */
 }
 
 .item:hover {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 /* Công tắc bật/tắt */
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
 .slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    border-radius: 20px;
-    transition: 0.4s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: 0.4s;
 }
 
 .slider:before {
-    position: absolute;
-    content: "";
-    height: 14px;
-    width: 14px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
 }
 
 input:checked + .slider {
-    background-color: #32cd32;
+  background-color: #32cd32;
 }
 
 input:checked + .slider:before {
-    transform: translateX(20px);
+  transform: translateX(20px);
 }
 .item .check-icon {
-    font-size: 16px;
-    color: #32cd32;
-    position: absolute;
-    right: 15px; /* Căn sát lề phải */
-    top: 50%;
-    transform: translateY(-50%);
+  font-size: 16px;
+  color: #32cd32;
+  position: absolute;
+  right: 15px; /* Căn sát lề phải */
+  top: 50%;
+  transform: translateY(-50%);
+}
+.back-icon,
+.menu-icon {
+  font-size: 28px;
+  color: #000;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
 }
