@@ -13,7 +13,7 @@ body {
 
 /* Header */
 .header {
-  background-color: #4caf50 !important;
+  background-color: #75f78d !important;
   padding: 10px;
   margin-bottom: 20px;
 }
@@ -40,6 +40,7 @@ header h1 {
 .dropdown-container {
   display: flex;
   gap: 10px;
+  justify-content: center;
   margin-top: 15px;
   margin-bottom: 20px;
 }
