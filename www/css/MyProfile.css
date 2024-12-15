@@ -18,7 +18,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #75F78D;
+  background-color: #4caf50 !important;
   padding: 10px 20px;
 }
 
@@ -108,7 +108,7 @@ body {
 }
 
 a {
-  text-decoration: none;  /* Bỏ gạch chân */
-  color: inherit;         /* Dùng màu chữ của phần tử chứa nó */
-  display: block;         /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
+  text-decoration: none; /* Bỏ gạch chân */
+  color: inherit; /* Dùng màu chữ của phần tử chứa nó */
+  display: block; /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
 }

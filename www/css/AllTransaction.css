@@ -16,6 +16,9 @@ body {
 .slick .slick-item {
   cursor: pointer;
 }
+/* .slick-next {
+  display: none !important;
+} */
 .slick-slider {
   border-bottom: 2px solid #a9a9a9;
   border-top: 2px solid #a9a9a9;
@@ -157,7 +160,7 @@ body {
 
 .footer-item.add-button {
   font-size: 24px;
-  background-color: #75f78d;
+  background-color: #4caf50 !important;
   color: white;
   width: 40px;
   height: 40px;
@@ -296,7 +299,7 @@ body {
 }
 
 .add-button {
-  background-color: #4caf50;
+  background-color: #4caf50 !important;
   border-radius: 50%;
   padding: 10px;
   color: white;

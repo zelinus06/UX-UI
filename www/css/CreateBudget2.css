@@ -1,259 +1,259 @@
 /* Basic Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .container {
-    width: 100%;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header {
-    background-color: #75f78d;
-    padding: 10px;
+  background-color: #75f78d !important;
+  padding: 10px;
 }
 
 .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
-    color: #000;
-    font-size: 24px;
+  color: #000;
+  font-size: 24px;
 }
 
 .back-icon,
 .menu-icon {
-    font-size: 28px;
-    color: #000;
-    cursor: pointer;
+  font-size: 28px;
+  color: #000;
+  cursor: pointer;
 }
 
 main {
-    min-height: 500px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Style cho dropdown */
 .dropdown {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 20px; /* Tạo khoảng cách giữa dropdown và hình ảnh */
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px; /* Tạo khoảng cách giữa dropdown và hình ảnh */
 }
 
 /* Style cho nút dropdown */
 .dropdown-btn {
-    background-color: #75F78D;
-    color: black;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border: 1px solid #000;
-    margin-top: 40px;
+  background-color: #4caf50 !important;
+  color: black;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border: 1px solid #000;
+  margin-top: 40px;
 }
 
 /* Ẩn dropdown content khi không có tương tác */
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
 
 /* Style cho các item trong dropdown */
 .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
 /* Chỉnh màu khi hover vào item */
 .dropdown-content a:hover {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 /* Hiển thị dropdown content khi hover */
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
 
 .dropdown:hover .dropdown-btn {
-    background-color: #75F78D;
+  background-color: #4caf50 !important;
 }
 
 /* Style cho hình ảnh */
 .f-icon {
-    margin-top: 20px; /* Khoảng cách giữa dropdown và hình ảnh */
-    width: 150px; /* Chỉnh kích thước của hình ảnh */
-    height: auto; /* Giữ tỷ lệ cho hình ảnh */
+  margin-top: 20px; /* Khoảng cách giữa dropdown và hình ảnh */
+  width: 150px; /* Chỉnh kích thước của hình ảnh */
+  height: auto; /* Giữ tỷ lệ cho hình ảnh */
 }
 
 .member {
-    margin-top: 79px;
+  margin-top: 79px;
 }
 
 .memberimg {
-    width: 270px;
+  width: 270px;
 }
 
 body {
-    font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 .back-icon,
 .menu-icon {
-    font-size: 20px;
-    cursor: pointer;
+  font-size: 20px;
+  cursor: pointer;
 }
 .modal {
-    display: none;
-    position: fixed;
-    top: 50px;
-    right: 10px;
-    width: 160px;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 50px;
+  right: 10px;
+  width: 160px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 1000;
 }
 .modal div {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
-    text-align: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
 }
 .modal div:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 a {
-    text-decoration: none; /* Bỏ gạch chân */
-    color: inherit; /* Dùng màu chữ của phần tử chứa nó */
-    display: block; /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
+  text-decoration: none; /* Bỏ gạch chân */
+  color: inherit; /* Dùng màu chữ của phần tử chứa nó */
+  display: block; /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
 }
 .Add {
-    background-color: #75F78D;
-    cursor: pointer;
-    padding: 20px 40px;
-    border: none;
-    border-radius: 50px;
+  background-color: #4caf50 !important;
+  cursor: pointer;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 50px;
 }
 #budget-form {
-    padding: 20px;
-    margin-top: 60px;
+  padding: 20px;
+  margin-top: 60px;
 }
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 label {
-    font-size: 14px;
-    color: #333;
+  font-size: 14px;
+  color: #333;
 }
 
 input,
 select,
 textarea,
 button {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 button {
-    background-color: #75f78d;
-    color: #fff;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.3s ease;
+  background-color: #4caf50 !important;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #28a428;
+  background-color: #28a428;
 }
 
 textarea {
-    resize: none;
-    height: 60px;
+  resize: none;
+  height: 60px;
 }
 
 .currency-input {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .currency-input select {
-    max-width: 80px;
+  max-width: 80px;
 }
 
 .icon-input {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .icon-input select {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .member-list {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .member-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 /* Nút Xóa Thành Viên */
 .remove-btn {
-    width: 80px; /* Chiều rộng cố định */
-    height: 35px; /* Chiều cao cố định */
-    background-color: #f44336; /* Màu nền đỏ */
-    color: white; /* Màu chữ */
-    border: none; /* Loại bỏ đường viền */
-    border-radius: 5px; /* Bo góc */
-    font-size: 14px; /* Kích thước chữ */
-    cursor: pointer; /* Con trỏ chuột dạng tay */
+  width: 80px; /* Chiều rộng cố định */
+  height: 35px; /* Chiều cao cố định */
+  background-color: #f44336; /* Màu nền đỏ */
+  color: white; /* Màu chữ */
+  border: none; /* Loại bỏ đường viền */
+  border-radius: 5px; /* Bo góc */
+  font-size: 14px; /* Kích thước chữ */
+  cursor: pointer; /* Con trỏ chuột dạng tay */
 
-    /* Đảm bảo chữ ở chính giữa */
-    display: flex; /* Sử dụng Flexbox */
-    align-items: center; /* Căn giữa theo chiều dọc */
-    justify-content: center; /* Căn giữa theo chiều ngang */
+  /* Đảm bảo chữ ở chính giữa */
+  display: flex; /* Sử dụng Flexbox */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  justify-content: center; /* Căn giữa theo chiều ngang */
 }
 
 /* Hiệu ứng khi hover */
 .remove-btn:hover {
-    background-color: #d32f2f; /* Màu nền đậm hơn khi hover */
+  background-color: #d32f2f; /* Màu nền đậm hơn khi hover */
 }
 
 .list {
-    display: none;
+  display: none;
 }
 
 .label-bold {
-    font-weight: bold;
+  font-weight: bold;
 }

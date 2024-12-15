@@ -17,8 +17,7 @@
     />
   </head>
   <body>
-    <div class="header">
-    </div>
+    <div class="header"></div>
 
     <div class="content">
       <div class="total-balance">
@@ -67,7 +66,8 @@
             slidesToScroll: 1,
             infinite: false,
             draggable: true,
-            initialSlide: $(".slick-item").length - 1,
+            <!-- initialSlide: $(".slick-item").length - 1, -->
+            arrows: false,
           });
         });
       </script>
@@ -190,12 +190,15 @@
 
       <a href="./setting/index.html">
         <div class="footer-item">
-          <img src="../img/Setting%202.png" alt="Trang chủ" class="footer-icon" />
+          <img
+            src="../img/Setting%202.png"
+            alt="Trang chủ"
+            class="footer-icon"
+          />
           Cài đặt
         </div>
       </a>
     </div>
-
 
     <script src="script.js"></script>
     <script>

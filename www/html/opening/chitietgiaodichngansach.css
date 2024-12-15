@@ -1,107 +1,108 @@
 /* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Body styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
 }
 
 /* Header */
 .header {
-    background-color: #75f78d;
-    padding: 10px;
-    margin-bottom: 20px;
+  background-color: #4caf50 !important;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 .header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
-    color: #000;
-    font-size: 24px;
+  color: #000;
+  font-size: 24px;
 }
 
 .back-icon,
 .menu-icon {
-    font-size: 28px;
-    color: #000;
-    cursor: pointer;
+  font-size: 28px;
+  color: #000;
+  cursor: pointer;
 }
 
 /* Dropdown container */
 .dropdown-container {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-    margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+  margin-bottom: 20px;
 }
 
 /* Dropdown Styling */
-.month-select, .year-select {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    width: 120px;
-    cursor: pointer;
+.month-select,
+.year-select {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 120px;
+  cursor: pointer;
 }
 
 /* Biểu đồ */
 .chart-container {
-    margin-top: 18px;
-    background-color: #e0ffe0;
-    padding: 12px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 18px;
+  background-color: #e0ffe0;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .chart-title {
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 6px;
-    font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 6px;
+  font-weight: bold;
 }
 
 /* Transaction List Section */
 .transaction-list {
-    margin-top: 20px;
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .transaction-list h3 {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 12px;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 12px;
 }
 
 .transaction-list ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .transaction-list ul li {
-    background-color: #f9f9f9;
-    margin: 6px 0;
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-    color: #555;
+  background-color: #f9f9f9;
+  margin: 6px 0;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  color: #555;
 }
 
 .center {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
