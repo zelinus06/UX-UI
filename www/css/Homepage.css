@@ -114,7 +114,7 @@ body {
 }
 
 .wallet-balance .wallet-name {
-  font-weight: bold; /* Tên ví sẽ đậm */
+  font-weight: normal; /* Tên ví sẽ đậm */
 }
 
 .wallet-balance .wallet-amount {
@@ -154,7 +154,7 @@ body {
 }
 
 .wallet-balance .wallet-name {
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .wallet-balance .wallet-amount {
@@ -247,4 +247,11 @@ a {
   text-decoration: none; /* Bỏ gạch chân */
   color: inherit; /* Dùng màu chữ của phần tử chứa nó */
   display: block; /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
+}
+
+.red {
+    color: red;
+}
+.blue {
+    color: blue;
 }

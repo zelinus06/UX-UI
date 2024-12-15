@@ -26,7 +26,7 @@
 
       header {
         background-color: #75f78d;
-        padding: 15px;
+        padding: 7px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       }
 
@@ -37,8 +37,7 @@
       }
 
       header p {
-        font-size: 22px;
-
+        font-size: 18px;
         font-weight: bold;
       }
 
@@ -174,6 +173,17 @@
       h1 {
         font-size: 18px;
       }
+
+      .chart-container {
+        width: 80%; /* Chiếm 75% chiều rộng */
+        margin: 10px auto; /* Căn giữa và thêm khoảng cách giữa các biểu đồ */
+        padding: 20px; /* Thêm khoảng cách bên trong */
+        border: 2px solid #ddd; /* Đường viền màu xám nhạt */
+        border-radius: 20px; /* Bo góc */
+        background-color: #ffffff; /* Màu nền trắng */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+      }
+
     </style>
   </head>
   <body>
@@ -204,7 +214,7 @@
 
         <!-- Chú thích cho Biểu đồ Thu/Chi -->
         <h1>Biểu đồ Thu và Chi</h1>
-        <div class="chart-container">
+        <div class="chart-container" style="width: 90%;">
           <!-- Line Chart: Thu và Chi -->
           <canvas id="lineChart"></canvas>
         </div>
