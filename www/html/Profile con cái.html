@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Ngân Sách</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .header {
+            background-color: #75f78d;
+            color: #333;
+            font-weight: bold;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5em;
+        }
+
+        .header .back-button {
+            margin-right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .container {
+            padding: 15px;
+        }
+
+        .user-info, .recent-activities, .filter-options, .chart-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            padding: 15px;
+        }
+
+        h2 {
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .info-item {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        .activities-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .activities-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1em;
+            border-bottom: 1px solid #f1f1f1;
+            padding: 10px 0;
+        }
+
+        .activities-list li:last-child {
+            border-bottom: none;
+        }
+
+        .activities-list .date, .activities-list .amount, .activities-list .description {
+            flex: 1;
+            text-align: center;
+        }
+
+        .activities-list .amount {
+            color: #4CAF50;
+        }
+
+        /* Add red color for negative amounts */
+        .activities-list .amount-negative {
+            color: #FF0000;
+        }
+
+        .activities-list .description {
+            text-align: left;
+        }
+
+        .filter-options label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        select, input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .chart-container {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .dropdown-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .dropdown-container select {
+            width: 48%;
+        }
+
+        /* Style for filtered data table */
+        #filtered-data {
+            margin-top: 20px;
+            margin-left: 20px;
+            display: none;
+        }
+
+        #filtered-transactions {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #filtered-transactions th, #filtered-transactions td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #filtered-transactions th {
+            background-color: #f2f2f2;
+        }
+
+        .total-summary {
+            font-size: 1.2em;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Hide the chart label initially */
+        .chart-label {
+            text-align: left;
+            font-weight: bold;
+            display: none;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50px;
+            right: 10px;
+            width: 160px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            z-index: 1000;
+        }
+        .modal div {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: center;
+        }
+        .modal div:last-child {
+            border-bottom: none;
+        }
+
+        a {
+            text-decoration: none;  /* Bỏ gạch chân */
+            color: inherit;         /* Dùng màu chữ của phần tử chứa nó */
+            display: block;         /* Hiển thị như block để nó có thể chiếm toàn bộ chiều rộng như div */
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
+        .header-title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .header-right {
+            cursor: pointer;
+        }
+        .profile-image img {
+            width: 80px;
+            height: 80px;
+            /* border: 2px solid #ddd; */
+            /* border-radius: 50%; */
+        }
+        .back-icon {
+            cursor: pointer;
+        }
+        .chart-container canvas {
+            max-width: 300px; /* Điều chỉnh kích thước tối đa */
+            max-height: 300px;
+            margin: 0 auto; /* Căn giữa biểu đồ */
+        }
+
+    </style>
+</head>
+<body>
+<!-- Header -->
+<!-- Header -->
+<div class="header">
+    <span class="back-icon" onclick="goBack()">&#x276E;</span>
+    <div class="header-title">My Profile</div>
+    <div class="header-right">
+        <span class="menu-icon" onclick="toggleModalOption()">&#x22EE;</span>
+    </div>
+</div>
+
+<!-- Main Container -->
+<div class="container">
+    <div class="modal" id="menuModal">
+        <a href="./AddLimitPayment.html">
+            <div>Thiết lập giới hạn</div>
+        </a>
+        <a href="./PersonalTransaction.html">
+            <div>Chi tiết giao dịch</div>
+        </a>
+        <a href="./setting/frame23.html">
+            <div>Thay đổi thông tin</div>
+        </a>
+    </div>
+    <!-- User Information -->
+    <div class="user-info">
+        <h2>Thông Tin Người Dùng</h2>
+        <p class="info-item"><strong>Tên:</strong> Long</p>
+        <p class="info-item"><strong>Email:</strong>long@gmail.com</p>
+        <p class="info-item"><strong>Vai trò trong gia đình:</strong> Con cái</p>
+    </div>
+
+    <div class="chart-section">
+        <h2>Tổng Quan Chi Tiêu</h2>
+        <div class="chart-container">
+            <canvas id="expenseChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="recent-activities">
+        <h2>Hoạt Động Gần Đây</h2>
+        <ul class="activities-list">
+            <li>
+                <span class="date">10/11/2024</span>
+                <span class="amount amount-negative">-20 USD</span>
+                <span class="description">ăn sáng</span>
+            </li>
+            <li>
+                <span class="date">08/11/2024</span>
+                <span class="amount amount-negative">-100 USD</span>
+                <span class="description">đồ dùng học tập</span>
+            </li>
+            <li>
+                <span class="date">03/11/2024</span>
+                <span class="amount amount-negative">-150 USD</span>
+                <span class="description">sách vở</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Filter Options -->
+    <div class="filter-options">
+        <h2>Lọc Giao Dịch</h2>
+
+        <label for="purpose">Mục Đích</label>
+        <select id="purpose">
+            <option value="all">Tất Cả</option>
+            <option value="food">Sách vở</option>
+            <option value="transport">Học tập</option>
+            <option value="Salary">Ăn uống</option>
+            <option value="other">Khác</option>
+        </select>
+
+        <label for="from-date">Từ Ngày</label>
+        <input type="date" id="from-date">
+
+        <label for="to-date">Đến Ngày</label>
+        <input type="date" id="to-date">
+
+        <!-- New Button to Add Filter -->
+        <button onclick="applyFilters()">Lọc Giao Dịch</button>
+    </div>
+
+    <!-- Chart Section (Initially Hidden) -->
+    <div class="chart-container" id="chart-section" style="display:none;">
+        <h2 class="chart-label">Biểu Đồ Tổng Quan</h2>
+        <canvas id="budgetChart"></canvas>
+    </div>
+
+    <!-- Filtered Data Table -->
+    <div id="filtered-data">
+        <h2>Các Giao Dịch Lọc</h2>
+        <ul class="activities-list" id="filtered-transactions">
+            <!-- Data will be populated here dynamically -->
+        </ul>
+
+        <!-- Total Summary -->
+        <div class="total-summary" id="total-summary">
+            <!-- Total Income and Total Expense will appear here -->
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // Sample data for testing
+    const transactions = [
+        { date: "10/11/2024", amount: 500, category: "income", purpose: "Salary" },
+        { date: "08/11/2024", amount: -100, category: "expense", purpose: "Food" },
+        { date: "03/11/2024", amount: 1500, category: "income", purpose: "Bonus" },
+        { date: "02/11/2024", amount: -200, category: "expense", purpose: "Transport" },
+    ];
+
+    function applyFilters() {
+        const category = document.getElementById("category").value;
+        const purpose = document.getElementById("purpose").value;
+        const fromDate = document.getElementById("from-date").value;
+        const toDate = document.getElementById("to-date").value;
+
+        // Filter transactions based on the selected values
+        let filteredData = transactions.filter(transaction => {
+            const matchCategory = (category === "all" || transaction.category === category);
+            const matchPurpose = (purpose === "all" || transaction.purpose === purpose);
+            const matchFromDate = !fromDate || new Date(transaction.date) >= new Date(fromDate);
+            const matchToDate = !toDate || new Date(transaction.date) <= new Date(toDate);
+
+            return matchCategory && matchPurpose && matchFromDate && matchToDate;
+        });
+
+        // Show filtered data
+        const dataContainer = document.getElementById("filtered-data");
+        dataContainer.style.display = "block";
+        const listContainer = document.getElementById("filtered-transactions");
+        listContainer.innerHTML = ""; // Clear previous list items
+
+        // Variables for total income and total expense
+        let totalIncome = 0;
+        let totalExpense = 0;
+
+        // Populate the list with filtered data
+        filteredData.forEach(transaction => {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `
+                    <span class="date">${transaction.date}</span>
+                    <span class="amount ${transaction.amount < 0 ? 'amount-negative' : ''}">${transaction.amount} USD</span>
+                    <span class="description">${transaction.category} - ${transaction.purpose}</span>
+                `;
+            listContainer.appendChild(listItem);
+
+            // Calculate total income and total expense
+            if (transaction.category === "income") {
+                totalIncome += transaction.amount;
+            } else if (transaction.category === "expense") {
+                totalExpense += Math.abs(transaction.amount); // Adding expense
+            }
+        });
+
+        // Display total income and total expense
+        const totalSummary = document.getElementById("total-summary");
+        totalSummary.innerHTML = `
+                Tổng Thu Nhập: ${totalIncome} USD<br>
+                Tổng Chi Tiêu: ${totalExpense} USD
+            `;
+
+        // Update the chart based on filtered data
+        updateChart(totalIncome, totalExpense);
+    }
+
+    // Chart.js to update chart data
+    function updateChart(income, expense) {
+        const ctx = document.getElementById('budgetChart').getContext('2d');
+        const budgetChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Thu Nhập', 'Chi Tiêu'],
+                datasets: [{
+                    label: 'Số Tiền (USD)',
+                    data: [income, expense],
+                    backgroundColor: ['#4CAF50', '#FF5252'],
+                    borderColor: ['#45A049', '#FF0000'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Show the chart section and label when the chart is updated
+        document.getElementById("chart-section").style.display = "block";
+        document.querySelector(".chart-label").style.display = "block";
+    }
+</script>
+<script>
+    function goBack() {
+        window.location.href = './MyBudget.html';
+    }
+    function toggleModalOption() {
+        var modal = document.getElementById("menuModal");
+        if (modal.style.display === "none" || modal.style.display === "") {
+            modal.style.display = "block";
+        } else {
+            modal.style.display = "none";
+        }
+    }
+    // Close the modal if clicked outside of it
+    window.onclick = function(event) {
+        var modal = document.getElementById("menuModal");
+        if (event.target != modal && event.target != document.querySelector('.menu-icon')) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<script>
+    // Data for the chart
+    const expenseData = {
+        labels: ["Thực phẩm", "Đồ chơi", "Sách vở"],
+        datasets: [{
+            label: "Chi Tiêu",
+            data: [100, 50, 200], // Giá trị chi tiêu theo danh mục
+            backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
+        }]
+    };
+
+    // Config for the pie chart
+    const config = {
+        type: "pie",
+        data: expenseData,
+    };
+
+    // Render the chart
+    const expenseChart = new Chart(
+        document.getElementById("expenseChart"),
+        config
+    );
+</script>
+</body>
+</html>
